@@ -1,0 +1,23 @@
+[
+  {
+    "name": "Example Mainland variety channel",
+    "handle": "@example",
+    "region": "cn",
+    "genre": "variety"
+  },
+  {
+    "name": "Example Taiwan news channel",
+    "url": "https://www.youtube.com/@example-news",
+    "region": "tw",
+    "genre": "news",
+    "singleShow": true,
+    "minMinutes": 5
+  },
+  {
+    "name": "Example Hong Kong drama channel",
+    "id": "UCxxxxxxxxxxxxxxxxxxxxxx",
+    "region": "hk",
+    "script": "t",
+    "excludeTitle": ["花絮", "特輯"]
+  }
+]

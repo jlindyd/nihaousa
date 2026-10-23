@@ -1,0 +1,667 @@
+<title>NiHaoUSA Design Mockup</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Sans+TC:wght@400;500;700&display=swap">
+<style>
+/* Layout: streaming-app pattern. Sticky top bar, full-bleed featured banner, region tiles, horizontal rows. Dark by default, light on request. */
+:root {
+  --bg: #121010;
+  --surface: #1c1919;
+  --surface-2: #2a2626;
+  --fg: #f5f1ef;
+  --muted: #a89f9b;
+  --line: #35302f;
+  --accent: #dc2f46;
+  --accent-soft: #3b1d23;
+  --on-accent: #ffffff;
+  --ok: #4cc58a;
+  --shadow: 0 2px 4px rgba(0,0,0,.35), 0 10px 28px rgba(0,0,0,.4);
+  --gl: max(16px, env(safe-area-inset-left, 0px));
+  --gr: max(16px, env(safe-area-inset-right, 0px));
+  --font: "DM Sans", "Noto Sans SC", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color-scheme: dark;
+}
+:root[data-theme="light"] {
+  --bg: #fbf9f8; --surface: #ffffff; --surface-2: #f0ebe9; --fg: #1d1a19; --muted: #6b625f; --line: #e4ddda;
+  --accent: #c81e34; --accent-soft: #fbe6e9; --on-accent: #ffffff; --ok: #1f8a54;
+  --shadow: 0 1px 2px rgba(29,26,25,.08), 0 8px 22px rgba(29,26,25,.1);
+  color-scheme: light;
+}
+:root[lang="zh-Hant"] { --font: "DM Sans", "Noto Sans TC", system-ui, -apple-system, "Segoe UI", sans-serif; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg); color: var(--fg); font-family: var(--font); font-size: 17px; line-height: 1.55;
+  padding-left: var(--gl); padding-right: var(--gr); padding-block: 0 24px;
+}
+:root.large body { font-size: 21px; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--bg); }
+button { font: inherit; color: inherit; cursor: pointer; border: 0; background: none; }
+button:focus-visible, input:focus-visible, .card:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+h1, h2, h3 { text-wrap: balance; margin: 0; line-height: 1.2; }
+.wrap { max-width: 1240px; margin: 0 auto; }
+.full { margin-left: calc(-1 * var(--gl)); margin-right: calc(-1 * var(--gr)); padding-left: var(--gl); padding-right: var(--gr); }
+
+/* top bar */
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: color-mix(in srgb, var(--bg) 92%, transparent); backdrop-filter: blur(10px);
+  margin-left: calc(-1 * var(--gl)); margin-right: calc(-1 * var(--gr)); padding-left: var(--gl); padding-right: var(--gr); border-bottom: 1px solid var(--line); }
+.top .wrap { display: flex; align-items: center; gap: 12px; padding-block: 10px; }
+.brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 20px; letter-spacing: -.01em; text-align: left; flex: none; }
+.logo-chip { background: #fff; border-radius: 14px; border: 1px solid var(--line); display: grid; place-items: center; flex: none; }
+.logo-chip img { display: block; }
+.brand .logo-chip { width: 44px; height: 44px; }
+.brand .logo-chip img { width: 34px; height: 34px; object-fit: contain; }
+.brand small { display: block; font-weight: 500; font-size: 12px; color: var(--muted); letter-spacing: 0; margin-top: -4px; }
+.nav { display: flex; gap: 2px; margin-left: 6px; }
+.nav button { padding: 9px 14px; border-radius: 999px; font-weight: 500; color: var(--muted); white-space: nowrap; }
+.nav button[aria-current="page"] { color: var(--fg); font-weight: 700; background: var(--surface-2); }
+.nav button:hover:not([aria-current="page"]) { color: var(--fg); }
+.searchbox { flex: 1; min-width: 0; position: relative; max-width: 440px; margin-left: auto; }
+.searchbox input { width: 100%; height: 46px; border-radius: 999px; border: 1.5px solid var(--line); background: var(--surface);
+  color: var(--fg); font: inherit; padding: 0 18px 0 46px; }
+.searchbox input::placeholder { color: var(--muted); }
+.searchbox svg { position: absolute; left: 15px; top: 12px; width: 22px; height: 22px; color: var(--muted); }
+.icon-btn { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; background: var(--surface-2); flex: none; }
+.icon-btn svg { width: 20px; height: 20px; }
+.avatar { background: var(--accent); color: var(--on-accent); font-weight: 700; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 46px; padding: 0 22px; border-radius: 10px;
+  font-weight: 700; background: var(--accent); color: var(--on-accent); }
+.btn.ghost { background: var(--surface-2); color: var(--fg); font-weight: 500; }
+.btn.on { background: var(--accent-soft); color: var(--accent); }
+.btn svg { width: 18px; height: 18px; }
+.btn.play { background: #fff; color: #141010; min-height: 50px; padding: 0 28px; font-size: 18px; }
+.btn.info { background: rgba(255,255,255,.22); color: #fff; min-height: 50px; padding: 0 24px; font-size: 18px; backdrop-filter: blur(6px); }
+.btn.info.on { background: #fff; color: #141010; }
+
+/* segmented controls */
+.seg { display: inline-flex; background: var(--surface-2); border-radius: 999px; padding: 4px; flex: none; }
+.seg button { padding: 6px 14px; border-radius: 999px; font-weight: 700; color: var(--muted); min-height: 36px; }
+.seg button[aria-pressed="true"] { background: var(--fg); color: var(--bg); }
+.seg.lang button { padding: 6px 11px; min-width: 40px; }
+
+/* featured banner */
+.hero { position: relative; overflow: hidden; min-height: clamp(400px, 44vw, 580px); display: flex; align-items: flex-end; color: #fff;
+  background: radial-gradient(110% 90% at 85% 0%, hsl(var(--h) 60% 44% / .85), transparent 62%), linear-gradient(135deg, hsl(var(--h) 52% 28%), hsl(calc(var(--h) + 40) 58% 10%)); }
+.hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(0,0,0,.45), transparent 60%), linear-gradient(180deg, transparent 55%, var(--bg)); pointer-events: none; }
+.hero-art { position: absolute; right: -2vw; top: 50%; transform: translateY(-58%); font-size: clamp(120px, 24vw, 340px); font-weight: 700; line-height: 1; letter-spacing: -.04em;
+  color: rgba(255,255,255,.09); white-space: nowrap; user-select: none; }
+.hero-in { position: relative; z-index: 1; width: 100%; display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; padding-block: 40px 56px; }
+.hero-body { max-width: 640px; }
+.hero h1 { font-size: clamp(34px, 6vw, 68px); letter-spacing: -.02em; text-shadow: 0 2px 18px rgba(0,0,0,.35); }
+.hero .en { opacity: .85; font-size: 18px; margin-top: 4px; }
+.hero p { margin: 12px 0 0; max-width: 52ch; font-size: clamp(16px, 1.6vw, 19px); text-shadow: 0 1px 10px rgba(0,0,0,.4); }
+.badges { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; font-size: 14px; font-weight: 500; }
+.badges span { padding: 3px 12px; border-radius: 999px; background: rgba(0,0,0,.38); }
+.badges .rtag { background: #fff; color: #141010; font-weight: 700; }
+.badges .off { color: #7be0ab; font-weight: 700; }
+.hero .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+.dots { display: flex; gap: 8px; align-items: center; padding-bottom: 6px; }
+.dot { width: 34px; height: 6px; border-radius: 3px; background: rgba(255,255,255,.35); padding: 0; position: relative; }
+.dot::before { content: ""; position: absolute; inset: -18px -2px; }
+.dot[aria-pressed="true"] { background: #fff; }
+.show-hero { min-height: clamp(340px, 38vw, 480px); }
+
+/* region tiles (like brand tiles on Disney+) */
+.tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: -8px; position: relative; z-index: 2; }
+.tile { position: relative; aspect-ratio: 16 / 7; border-radius: 16px; overflow: hidden; color: #fff; text-align: left; padding: 16px 18px; display: flex; flex-direction: column; justify-content: flex-end;
+  border: 2px solid transparent; box-shadow: var(--shadow); transition: transform .18s ease, border-color .18s ease; }
+.tile:hover { transform: scale(1.03); border-color: rgba(255,255,255,.85); }
+.tile b { font-size: clamp(20px, 3vw, 34px); letter-spacing: .02em; line-height: 1.1; }
+.tile span { font-size: 14px; opacity: .85; }
+.tile::before { content: ""; position: absolute; width: 70%; aspect-ratio: 1; right: -18%; top: -40%; border-radius: 50%; background: rgba(255,255,255,.14); }
+
+/* rows */
+.row { margin-top: 30px; }
+.row-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 10px; }
+.row-head h2 { font-size: 22px; letter-spacing: -.01em; }
+.row-head h2 span { font-weight: 400; font-size: 14px; color: var(--muted); margin-left: 8px; }
+.row-head button { color: var(--muted); font-weight: 700; min-height: 40px; white-space: nowrap; }
+.row-head button:hover { color: var(--fg); }
+.rail { position: relative; }
+.scroller { display: flex; gap: 12px; overflow-x: auto; padding: 8px 2px 16px; scroll-snap-type: x proximity; scrollbar-width: none; }
+.scroller::-webkit-scrollbar { display: none; }
+.scroller > * { scroll-snap-align: start; flex: none; }
+.arrow { display: none; position: absolute; top: 8px; bottom: 16px; width: 48px; z-index: 3; align-items: center; justify-content: center; background: color-mix(in srgb, var(--bg) 75%, transparent); opacity: 0; transition: opacity .15s; }
+.arrow svg { width: 28px; height: 28px; }
+.arrow.l { left: -2px; border-radius: 12px 0 0 12px; } .arrow.r { right: -2px; border-radius: 0 12px 12px 0; }
+.rail:hover .arrow { opacity: 1; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 22px 14px; }
+
+/* cards: wide 16:9, the shape of YouTube thumbnails */
+.card { text-align: left; display: block; width: 100%; border-radius: 12px; }
+.scroller .card { width: 260px; }
+.poster { position: relative; aspect-ratio: 16 / 9; border-radius: 12px; overflow: hidden; color: #fff; padding: 12px 14px;
+  display: flex; flex-direction: column; justify-content: flex-end; box-shadow: var(--shadow); transition: transform .18s ease; }
+.card:hover .poster, .card:focus-visible .poster { transform: scale(1.05); }
+.poster::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0) 35%, rgba(0,0,0,.5)); pointer-events: none; }
+.poster > * { position: relative; z-index: 1; }
+.poster .zh { font-size: 23px; font-weight: 700; line-height: 1.15; letter-spacing: .02em; text-shadow: 0 1px 8px rgba(0,0,0,.35); }
+.poster .tag { position: absolute; left: 10px; top: 10px; z-index: 1; font-size: 12px; font-weight: 700; padding: 3px 9px; border-radius: 999px; background: rgba(0,0,0,.5); }
+.poster .new { position: absolute; right: 10px; top: 10px; z-index: 1; font-size: 12px; font-weight: 700; padding: 3px 9px; border-radius: 999px; background: var(--accent); color: var(--on-accent); }
+.poster .pl { position: absolute; z-index: 2; inset: 0; display: grid; place-items: center; opacity: 0; transition: opacity .15s; }
+.poster .pl i { width: 52px; height: 52px; border-radius: 50%; background: rgba(255,255,255,.92); color: #141010; display: grid; place-items: center; }
+.poster .pl svg { width: 22px; height: 22px; margin-left: 3px; }
+.card:hover .pl, .card:focus-visible .pl { opacity: 1; }
+.progress { height: 5px; border-radius: 3px; background: rgba(255,255,255,.35); margin-top: 8px; overflow: hidden; }
+.progress i { display: block; height: 100%; background: var(--accent); }
+.meta { padding: 8px 2px 0; }
+.meta b { display: block; font-weight: 700; line-height: 1.3; }
+.meta span { font-size: 14px; color: var(--muted); }
+.official { color: var(--ok); font-weight: 700; }
+.t10 { display: flex; align-items: flex-end; }
+.t10 .rank { font-size: 112px; font-weight: 700; line-height: .78; color: transparent; -webkit-text-stroke: 3px var(--muted); margin-right: -14px; margin-bottom: 36px; position: relative; z-index: 1; letter-spacing: -.06em; }
+.t10 .card { width: 220px; }
+
+/* search */
+.ai-box { display: flex; gap: 14px; align-items: flex-start; background: var(--surface); border: 1.5px solid var(--line); border-radius: 20px; padding: 16px; margin: 16px 0; }
+.ai-box .logo-chip { width: 52px; height: 52px; border-radius: 16px; }
+.ai-box .logo-chip img { width: 42px; height: 42px; object-fit: contain; }
+.ai-box p { margin: 0; }
+.why { font-size: 14px; color: var(--muted); margin-top: 4px; }
+.preview-note { font-size: 13px; color: var(--muted); border: 1px dashed var(--line); border-radius: 10px; padding: 6px 12px; display: inline-block; margin-top: 10px; }
+.empty { text-align: center; padding: 48px 0; color: var(--muted); }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 0; }
+.chip { padding: 8px 16px; border-radius: 999px; background: var(--surface); border: 1.5px solid var(--line); font-weight: 500; min-height: 40px; }
+.chip:hover { border-color: var(--fg); }
+.chip[aria-pressed="true"] { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+.group { margin-top: 26px; }
+.group h2 { font-size: 22px; margin-bottom: 12px; }
+.group h2 span { font-size: 14px; font-weight: 400; color: var(--muted); margin-left: 8px; }
+
+/* show details + player */
+.tabs { display: flex; gap: 6px; border-bottom: 1px solid var(--line); margin-top: 26px; }
+.tabs button { padding: 12px 18px; font-weight: 700; color: var(--muted); border-bottom: 3px solid transparent; min-height: 48px; }
+.tabs button[aria-pressed="true"] { color: var(--fg); border-bottom-color: var(--accent); }
+.eps { margin-top: 12px; display: grid; gap: 4px; }
+.ep { display: grid; grid-template-columns: 40px 176px minmax(0, 1fr) auto; gap: 16px; align-items: center; padding: 12px; border-radius: 12px; text-align: left; width: 100%; }
+.ep:hover { background: var(--surface); }
+.ep .n { font-weight: 700; font-size: 22px; color: var(--muted); text-align: center; }
+.ep .thumb { position: relative; aspect-ratio: 16 / 9; border-radius: 8px; overflow: hidden; display: block; }
+.ep .thumb i { position: absolute; left: 0; bottom: 0; height: 4px; background: var(--accent); }
+.ep .t b { display: block; line-height: 1.3; }
+.ep .t span { font-size: 14px; color: var(--muted); }
+.ep .st { font-size: 14px; font-weight: 700; color: var(--ok); white-space: nowrap; }
+.ep.done .t b { color: var(--muted); font-weight: 500; }
+.player { position: relative; aspect-ratio: 16 / 9; width: 100%; border-radius: 14px; overflow: hidden; background: #0a0808; color: #fff; display: grid; place-items: center; text-align: center; box-shadow: var(--shadow); }
+.player .play { width: 84px; height: 84px; border-radius: 50%; background: #fff; color: #141010; display: grid; place-items: center; margin: 0 auto 14px; }
+.player .play svg { width: 34px; height: 34px; margin-left: 4px; }
+.player small { display: block; opacity: .7; font-size: 14px; max-width: 420px; padding: 0 16px; margin: 4px auto 0; }
+.split { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 28px; align-items: start; }
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 16px; }
+.panel h3 { font-size: 18px; margin-bottom: 10px; }
+.mini { display: grid; grid-template-columns: 120px 1fr; gap: 12px; padding: 8px 0; text-align: left; width: 100%; align-items: center; }
+.mini .poster { padding: 6px 8px; border-radius: 10px; }
+.mini .poster .zh { font-size: 13px; }
+.mini b { display: block; line-height: 1.3; font-size: 15px; }
+.mini span { font-size: 13px; color: var(--muted); }
+.actions { display: flex; flex-wrap: wrap; gap: 10px; margin: 16px 0; }
+.menu { display: none; gap: 6px; flex-direction: column; margin-top: 8px; }
+.menu.open { display: flex; }
+.menu button { text-align: left; padding: 10px 14px; border-radius: 12px; background: var(--surface-2); min-height: 44px; }
+.menu button[aria-pressed="true"] { background: var(--accent-soft); color: var(--accent); font-weight: 700; }
+
+/* account */
+.signin { max-width: 480px; margin: 24px auto; text-align: center; }
+.signin .logo-chip { width: 96px; height: 96px; margin: 0 auto 12px; border-radius: 28px; }
+.signin .logo-chip img { width: 80px; height: 80px; object-fit: contain; }
+.signin h1 { font-size: 28px; }
+.signin p { color: var(--muted); }
+.sso { display: grid; gap: 10px; margin-top: 18px; }
+.sso button { min-height: 52px; border-radius: 12px; border: 1.5px solid var(--line); background: var(--surface); font-weight: 700; }
+.sso button:hover { border-color: var(--fg); }
+
+main { padding-top: 0; min-height: 70vh; }
+.pad { padding-top: 24px; }
+.note { margin-top: 36px; padding: 12px 16px; border-radius: 14px; background: var(--surface-2); color: var(--muted); font-size: 14px; }
+.back { color: var(--muted); font-weight: 500; min-height: 44px; padding: 0 4px; margin-bottom: 8px; display: inline-flex; align-items: center; gap: 6px; }
+.foot { margin-top: 28px; padding-top: 18px; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; gap: 14px; align-items: center; color: var(--muted); font-size: 14px; }
+.foot .btn { min-height: 40px; padding: 0 16px; }
+.tabbar { display: none; }
+
+@media (min-width: 861px) { .arrow { display: flex; } }
+@media (max-width: 1000px) { .nav button { padding: 9px 10px; } }
+@media (max-width: 860px) {
+  .nav, #themeBtn, #acct { display: none; }
+  .brand small, .brand span.word { display: none; }
+  .searchbox { max-width: none; }
+  .split { grid-template-columns: 1fr; }
+  .tabbar { display: flex; position: fixed; left: 0; right: 0; bottom: 0; z-index: 25; background: var(--surface); border-top: 1px solid var(--line);
+    padding: 6px var(--gr) calc(6px + env(safe-area-inset-bottom, 0px)) var(--gl); }
+  .tabbar button { flex: 1; display: grid; justify-items: center; gap: 2px; font-size: 12px; font-weight: 500; color: var(--muted); min-height: 52px; align-content: center; }
+  .tabbar button svg { width: 24px; height: 24px; }
+  .tabbar button[aria-current="page"] { color: var(--fg); font-weight: 700; }
+  .tabbar button[aria-current="page"] svg { color: var(--accent); }
+  body { padding-bottom: 90px; }
+  .ep { grid-template-columns: 120px minmax(0, 1fr) auto; }
+  .ep .n { display: none; }
+}
+@media (max-width: 600px) {
+  .scroller .card { width: 220px; }
+  .t10 .card { width: 190px; }
+  .t10 .rank { font-size: 88px; }
+  .grid { grid-template-columns: 1fr; }
+  .seg.lang button { padding: 6px 9px; min-width: 36px; }
+  .tiles { gap: 8px; }
+  .tile { padding: 10px 12px; aspect-ratio: 4 / 5; }
+  .tile span { font-size: 12px; }
+  .hero-in { padding-block: 28px 44px; }
+  .dots { display: none; }
+  .ep .t span { display: block; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .tile, .poster, .arrow, .poster .pl { transition: none; } }
+</style>
+
+<div class="top">
+  <div class="wrap">
+    <button class="brand" data-go="home" aria-label="NiHaoUSA">
+      <span class="logo-chip"><img src="__LOGO__" alt=""></span>
+      <span class="word">NiHaoUSA<small>你好 USA</small></span>
+    </button>
+    <nav class="nav" id="nav" aria-label="Main">
+      <button data-go="home" data-i18n="home"></button>
+      <button data-go="region:cn" data-i18n="cn"></button>
+      <button data-go="region:tw" data-i18n="tw"></button>
+      <button data-go="region:hk" data-i18n="hk"></button>
+      <button data-go="lists" data-i18n="mylist"></button>
+    </nav>
+    <form class="searchbox" id="searchForm" role="search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+      <input id="q" type="search" autocomplete="off" aria-label="Search">
+    </form>
+    <div class="seg lang" id="langSeg" role="group" aria-label="Language">
+      <button data-lang="s" lang="zh-Hans">简</button>
+      <button data-lang="t" lang="zh-Hant">繁</button>
+      <button data-lang="e" lang="en">EN</button>
+    </div>
+    <button class="icon-btn" id="themeBtn" aria-label="Light / dark">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg>
+    </button>
+    <button class="icon-btn" id="acct" data-go="lists" aria-label="My account"></button>
+  </div>
+</div>
+
+<main id="view" tabindex="-1"></main>
+
+<nav class="tabbar" id="tabbar" aria-label="Main">
+  <button data-go="home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M3 11l9-8 9 8v9a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1z"/></svg><span data-i18n="home"></span></button>
+  <button data-go="region:cn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="5" width="18" height="13" rx="2"/><path d="M8 21h8"/></svg><span data-i18n="cn"></span></button>
+  <button data-go="region:tw"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="5" width="18" height="13" rx="2"/><path d="M8 21h8"/></svg><span data-i18n="tw"></span></button>
+  <button data-go="region:hk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="5" width="18" height="13" rx="2"/><path d="M8 21h8"/></svg><span data-i18n="hk"></span></button>
+  <button data-go="lists"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M6 3h12v18l-6-4-6 4z"/></svg><span data-i18n="me"></span></button>
+</nav>
+
+<script>
+const LOGO = "__LOGO__";
+const LS = { get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }, set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} } };
+
+/* ---------- Interface text: s = 简体, t = 繁體, e = English ---------- */
+const L = {
+  s: { home: "首页", cn: "大陆", tw: "台湾", hk: "香港", mylist: "我的列表", me: "我的", search: "搜索",
+    drama: "电视剧", variety: "综艺", news: "新闻", life: "生活", doc: "纪录片", kids: "儿童", all: "全部",
+    ph: "搜索节目、拼音或关键词", play: "播放", info: "详情", byRegion: "按地区浏览", featured: "今日推荐",
+    contW: "继续观看", contWs: "Continue watching", top10: R => `${R} 本周 Top 10`, latest: R => `${R} 最新上线`,
+    more: "全部 ›", back: "返回", nShows: n => `${n} 个节目`, epN: n => `第${n}期`, epsTotal: n => `共 ${n} 集`, epsShort: n => `${n}集`,
+    official: "官方频道", start: n => `播放 第${n}期`, cont: n => `继续 第${n}期`, follow: "关注 · 新集提醒", following: "已关注", share: "分享",
+    tabEps: "剧集", tabMore: "更多类似", source: c => `来源：${c} · 每小时自动检查更新`, done: "已看", mins: n => `${n} 分钟`, today: "今天", yesterday: "昨天", date: d => `10月${d}日`,
+    playerNote: "这里是 YouTube 官方播放器。看到哪里会自动记住，下次从这里继续。", addList: "加入列表", inList: "已在列表", markW: "标记已看", markedW: "✓ 已标记", copied: "链接已复制",
+    report: "举报", reported: "已收到举报，谢谢", later: "稍后再看", favs: "我的收藏", next: "接下来", caught: "已经是最新一期。", alsoLike: "同地区更多节目",
+    signinT: "登录，保存你的节目", signinS: "记住看到哪一集，建立自己的列表，新集上线时提醒你。手机和电脑同步。",
+    google: "使用 Google 登录", apple: "使用 Apple 登录", facebook: "使用 Facebook 登录", email: "使用邮箱登录", signinFine: "登录只用于保存你的列表和观看记录。",
+    followingRow: "正在关注", followingS: "新集提醒", customS: "自建列表 · 可分享", emptyList: "还没有节目。在播放页点“加入列表”。",
+    askAI: "AI 问问", allRegions: "全部地区", searchEmpty: "输入节目名、拼音或关键词，例如 “zhoumo”、“古装”、“粤语”。", found: n => `找到 ${n} 个结果`, noRes: q => `没有找到 “${q}”。试试别的词，或者问问 AI。`, askBtn: "用 AI 问问",
+    aiDefault: "我妈妈喜欢看的轻松节目", aiAnswer: n => `我从节目库里挑了 ${n} 个，节奏轻松，适合一起看。按地区分开列出。`, aiPreview: "预览：AI 搜索将在后续版本推出。这里是示意。", why: "推荐原因：", sep: "、",
+    note: "这是设计示意，节目名为虚构。正式网站会显示每个视频的 YouTube 缩略图，播放器使用 YouTube 官方嵌入。大陆、台湾、香港的节目分开呈现，不混在一起。",
+    langLabel: "语言", theme: "深色 / 浅色", large: "大字" },
+  t: { home: "首頁", cn: "大陸", tw: "台灣", hk: "香港", mylist: "我的清單", me: "我的", search: "搜尋",
+    drama: "電視劇", variety: "綜藝", news: "新聞", life: "生活", doc: "紀錄片", kids: "兒童", all: "全部",
+    ph: "搜尋節目、拼音或關鍵字", play: "播放", info: "詳情", byRegion: "按地區瀏覽", featured: "今日推薦",
+    contW: "繼續觀看", contWs: "Continue watching", top10: R => `${R} 本週 Top 10`, latest: R => `${R} 最新上線`,
+    more: "全部 ›", back: "返回", nShows: n => `${n} 個節目`, epN: n => `第${n}期`, epsTotal: n => `共 ${n} 集`, epsShort: n => `${n}集`,
+    official: "官方頻道", start: n => `播放 第${n}期`, cont: n => `繼續 第${n}期`, follow: "關注 · 新集提醒", following: "已關注", share: "分享",
+    tabEps: "劇集", tabMore: "更多類似", source: c => `來源：${c} · 每小時自動檢查更新`, done: "已看", mins: n => `${n} 分鐘`, today: "今天", yesterday: "昨天", date: d => `10月${d}日`,
+    playerNote: "這裡是 YouTube 官方播放器。看到哪裡會自動記住，下次從這裡繼續。", addList: "加入清單", inList: "已在清單", markW: "標記已看", markedW: "✓ 已標記", copied: "連結已複製",
+    report: "檢舉", reported: "已收到檢舉，謝謝", later: "稍後再看", favs: "我的收藏", next: "接下來", caught: "已經是最新一期。", alsoLike: "同地區更多節目",
+    signinT: "登入，儲存你的節目", signinS: "記住看到哪一集，建立自己的清單，新集上線時提醒你。手機和電腦同步。",
+    google: "使用 Google 登入", apple: "使用 Apple 登入", facebook: "使用 Facebook 登入", email: "使用電子郵件登入", signinFine: "登入只用於儲存你的清單和觀看紀錄。",
+    followingRow: "正在關注", followingS: "新集提醒", customS: "自建清單 · 可分享", emptyList: "還沒有節目。在播放頁點「加入清單」。",
+    askAI: "AI 問問", allRegions: "全部地區", searchEmpty: "輸入節目名、拼音或關鍵字，例如 “zhoumo”、“古裝”、“粵語”。", found: n => `找到 ${n} 個結果`, noRes: q => `沒有找到 “${q}”。試試別的詞，或者問問 AI。`, askBtn: "用 AI 問問",
+    aiDefault: "我媽媽喜歡看的輕鬆節目", aiAnswer: n => `我從節目庫裡挑了 ${n} 個，節奏輕鬆，適合一起看。按地區分開列出。`, aiPreview: "預覽：AI 搜尋將在後續版本推出。這裡是示意。", why: "推薦原因：", sep: "、",
+    note: "這是設計示意，節目名為虛構。正式網站會顯示每支影片的 YouTube 縮圖，播放器使用 YouTube 官方嵌入。大陸、台灣、香港的節目分開呈現，不混在一起。",
+    langLabel: "語言", theme: "深色 / 淺色", large: "大字" },
+  e: { home: "Home", cn: "Mainland", tw: "Taiwan", hk: "Hong Kong", mylist: "My List", me: "Me", search: "Search",
+    drama: "Dramas", variety: "Variety", news: "News", life: "Life", doc: "Documentary", kids: "Kids", all: "All",
+    ph: "Search shows, pinyin or keywords", play: "Play", info: "More info", byRegion: "Browse by region", featured: "Featured today",
+    contW: "Continue watching", contWs: "", top10: R => `Top 10 in ${R} this week`, latest: R => `New in ${R}`,
+    more: "See all ›", back: "Back", nShows: n => `${n} shows`, epN: n => `Episode ${n}`, epsTotal: n => `${n} episodes`, epsShort: n => `${n} eps`,
+    official: "Official channel", start: n => `Play Episode ${n}`, cont: n => `Continue Episode ${n}`, follow: "Follow for new episodes", following: "Following", share: "Share",
+    tabEps: "Episodes", tabMore: "More like this", source: c => `Source: ${c} · Checked for new episodes hourly`, done: "Watched", mins: n => `${n} min`, today: "Today", yesterday: "Yesterday", date: d => `Oct ${d}`,
+    playerNote: "The official YouTube player appears here. Your place is saved automatically.", addList: "Add to list", inList: "In my list", markW: "Mark watched", markedW: "✓ Marked", copied: "Link copied",
+    report: "Report", reported: "Report received. Thank you.", later: "Watch later", favs: "Favorites", next: "Up next", caught: "You're caught up.", alsoLike: "More from this region",
+    signinT: "Sign in to save your shows", signinS: "Remember where you stopped, build your own lists, and get alerts for new episodes. Synced across phone and computer.",
+    google: "Continue with Google", apple: "Continue with Apple", facebook: "Continue with Facebook", email: "Continue with email", signinFine: "Signing in is only used to save your lists and watch history.",
+    followingRow: "Following", followingS: "", customS: "Your list · shareable", emptyList: "Nothing here yet. Tap “Add to list” on a video.",
+    askAI: "Ask AI", allRegions: "All regions", searchEmpty: "Type a show name, pinyin or keyword, such as “zhoumo”, “cantonese” or “family”.", found: n => `${n} results`, noRes: q => `No results for “${q}”. Try another word, or ask AI.`, askBtn: "Ask AI instead",
+    aiDefault: "Something light my mom would enjoy", aiAnswer: n => `I picked ${n} shows from the catalog that are easy to watch together, listed by region.`, aiPreview: "Preview: AI search is planned for a later version. This is an illustration.", why: "Why: ", sep: ", ",
+    note: "Design mockup with made-up show titles. The real site shows each video's YouTube thumbnail, and the player is YouTube's official embed. Mainland, Taiwan and Hong Kong shows are kept apart, never mixed.",
+    langLabel: "Language", theme: "Dark / light", large: "Larger text" }
+};
+const REG = ["cn", "tw", "hk"];
+const RHUE = { cn: 8, tw: 195, hk: 280 };
+const FEAT = { cn: 2, tw: 13, hk: 16 };
+const HOMEFEAT = [2, 13, 16];
+const GENRES = ["drama", "variety", "news", "life", "doc", "kids"];
+const CHIPS = { s: ["轻松", "古装", "粤语", "家常菜", "养生", "新闻", "儿童"], t: ["輕鬆", "古裝", "粵語", "家常菜", "養生", "新聞", "兒童"], e: ["light", "period", "cantonese", "cooking", "wellness", "news", "kids"] };
+
+/* ---------- Sample shows (made-up), each in one region and written in all three languages ---------- */
+const SHOWS = [
+  { id: 2, r: "cn", g: "drama", hue: 350, eps: 36, isNew: true, year: 2025,
+    s: ["古城往事", "一座古城里三代人的故事，从戏楼到书院，节奏舒缓。", "古装 爱情 历史 剧情"], t: ["古城往事", "一座古城裡三代人的故事，從戲樓到書院，節奏舒緩。", "古裝 愛情 歷史 劇情"],
+    e: ["Tales of the Old City", "Three generations in an old city, from the opera house to the academy. Slow and gentle.", "period drama romance history"], pin: "gucheng wangshi" },
+  { id: 9, r: "cn", g: "drama", hue: 30, eps: 40, isNew: false, year: 2025,
+    s: ["幸福小院", "一个胡同小院里的邻里日常，家长里短，温暖治愈。", "家庭 温暖 轻松 邻里 妈妈"], t: ["幸福小院", "一個胡同小院裡的鄰里日常，家長里短，溫暖治癒。", "家庭 溫暖 輕鬆 鄰里 媽媽"],
+    e: ["The Little Courtyard", "Daily life among neighbors in a courtyard. Warm and comforting.", "family warm light"], pin: "xingfu xiaoyuan" },
+  { id: 3, r: "cn", g: "variety", hue: 42, eps: 18, isNew: true, year: 2026,
+    s: ["老友记事", "几位老朋友一起旅行、聊天，轻松不烧脑，适合全家一起看。", "轻松 搞笑 朋友 聊天 妈妈 综艺"], t: ["老友記事", "幾位老朋友一起旅行、聊天，輕鬆不燒腦，適合全家一起看。", "輕鬆 搞笑 朋友 聊天 媽媽 綜藝"],
+    e: ["Old Friends", "Old friends travel and talk. Light, easy, good for the whole family.", "light funny friends travel"], pin: "laoyou jishi" },
+  { id: 4, r: "cn", g: "news", hue: 214, eps: 300, isNew: true, year: 2026,
+    s: ["每日新闻联播", "每天二十分钟，国内外要闻一次看完。", "新闻 时事 每日"], t: ["每日新聞聯播", "每天二十分鐘，國內外要聞一次看完。", "新聞 時事 每日"],
+    e: ["Daily News Brief", "Twenty minutes a day covers the main stories at home and abroad.", "news daily"], pin: "meiri xinwen" },
+  { id: 5, r: "cn", g: "life", hue: 150, eps: 40, isNew: false, year: 2026,
+    s: ["养生小课堂", "医生讲解日常保健，每集十分钟，字幕清晰。", "养生 健康 老人 中医 妈妈"], t: ["養生小課堂", "醫生講解日常保健，每集十分鐘，字幕清晰。", "養生 健康 老人 中醫 媽媽"],
+    e: ["Healthy Living", "A doctor explains everyday health care. Ten minutes, clear subtitles.", "wellness health seniors"], pin: "yangsheng ke" },
+  { id: 8, r: "cn", g: "doc", hue: 190, eps: 10, isNew: false, year: 2023,
+    s: ["山河行", "十集纪录片，沿着大河走过八个省。", "纪录片 旅行 风景 历史"], t: ["山河行", "十集紀錄片，沿著大河走過八個省。", "紀錄片 旅行 風景 歷史"],
+    e: ["Rivers and Mountains", "A ten-part documentary following a great river through eight provinces.", "documentary travel scenery"], pin: "shanhe xing" },
+  { id: 10, r: "cn", g: "kids", hue: 55, eps: 60, isNew: false, year: 2024,
+    s: ["小熊识字", "每集教五个汉字，适合三到六岁的孩子。", "儿童 识字 动画 学中文"], t: ["小熊識字", "每集教五個漢字，適合三到六歲的孩子。", "兒童 識字 動畫 學中文"],
+    e: ["Little Bear ABC", "Five Chinese characters per episode, for ages three to six.", "kids learning cartoon"], pin: "xiaoxiong shizi" },
+
+  { id: 13, r: "tw", g: "drama", hue: 200, eps: 28, isNew: true, year: 2026,
+    s: ["海边小镇", "台湾东海岸小镇里的家庭与友情，画面清新。", "家庭 友情 治愈 剧情"], t: ["海邊小鎮", "台灣東海岸小鎮裡的家庭與友情，畫面清新。", "家庭 友情 治癒 劇情"],
+    e: ["Seaside Town", "Family and friendship in a small town on Taiwan's east coast.", "family friendship drama"], pin: "haibian xiaozhen" },
+  { id: 7, r: "tw", g: "variety", hue: 95, eps: 12, isNew: false, year: 2025,
+    s: ["爸妈上学记", "父母和孩子互换身份去上学，笑中带泪。", "轻松 家庭 亲子 温暖 妈妈"], t: ["爸媽上學記", "父母和孩子互換身份去上學，笑中帶淚。", "輕鬆 家庭 親子 溫暖 媽媽"],
+    e: ["Back to School", "Parents and kids swap roles and go to school. Funny and moving.", "family light warm"], pin: "bama shangxue ji" },
+  { id: 11, r: "tw", g: "variety", hue: 305, eps: 22, isNew: true, year: 2026,
+    s: ["夜话台北", "深夜脱口秀，聊时事也聊生活。", "台湾 脱口秀 搞笑 轻松"], t: ["夜話台北", "深夜脫口秀，聊時事也聊生活。", "台灣 脫口秀 搞笑 輕鬆"],
+    e: ["Taipei Nights", "A late-night talk show about current events and daily life.", "taiwan talk show funny"], pin: "yehua taibei" },
+  { id: 14, r: "tw", g: "news", hue: 218, eps: 365, isNew: true, year: 2026,
+    s: ["台湾晚间新闻", "每晚半小时，台湾与国际新闻。", "新闻 时事 台湾"], t: ["台灣晚間新聞", "每晚半小時，台灣與國際新聞。", "新聞 時事 台灣"],
+    e: ["Taiwan Evening News", "Half an hour each evening of Taiwan and world news.", "news taiwan daily"], pin: "taiwan wanjian xinwen" },
+  { id: 1, r: "tw", g: "life", hue: 18, eps: 24, isNew: true, year: 2026,
+    s: ["周末大厨房", "每集一道家常菜，步骤清楚，适合第一次下厨的人。", "家常菜 美食 轻松 做饭 妈妈 烹饪"], t: ["週末大廚房", "每集一道家常菜，步驟清楚，適合第一次下廚的人。", "家常菜 美食 輕鬆 做飯 媽媽 烹飪"],
+    e: ["Weekend Kitchen", "One home-style dish per episode, with clear steps for first-time cooks.", "home cooking food easy"], pin: "zhoumo dachufang" },
+  { id: 15, r: "tw", g: "life", hue: 25, eps: 32, isNew: false, year: 2025,
+    s: ["夜市美食地图", "走遍台湾各地夜市，一集介绍一个小吃摊。", "美食 夜市 台湾 小吃"], t: ["夜市美食地圖", "走遍台灣各地夜市，一集介紹一個小吃攤。", "美食 夜市 台灣 小吃"],
+    e: ["Night Market Food Map", "A tour of Taiwan's night markets, one food stall per episode.", "food night market taiwan snacks"], pin: "yeshi meishi ditu" },
+
+  { id: 16, r: "hk", g: "drama", hue: 10, eps: 30, isNew: true, year: 2026,
+    s: ["茶餐厅日常", "粤语喜剧，一家茶餐厅里的人和事。", "粤语 喜剧 搞笑 香港"], t: ["茶餐廳日常", "粵語喜劇，一家茶餐廳裡的人和事。", "粵語 喜劇 搞笑 香港"],
+    e: ["Tea Restaurant Stories", "A Cantonese comedy about the people of a neighborhood café.", "cantonese comedy funny hong kong"], pin: "chacanting richang" },
+  { id: 6, r: "hk", g: "drama", hue: 270, eps: 30, isNew: false, year: 2024,
+    s: ["港岛风云", "粤语原声，港岛警队与商界的暗战。", "粤语 警匪 剧情 香港"], t: ["港島風雲", "粵語原聲，港島警隊與商界的暗戰。", "粵語 警匪 劇情 香港"],
+    e: ["Harbour Lights", "Cantonese audio. A quiet war between the police and business on the island.", "cantonese crime hong kong"], pin: "gangdao fengyun" },
+  { id: 19, r: "hk", g: "variety", hue: 250, eps: 26, isNew: false, year: 2025,
+    s: ["维港夜话", "粤语谈话节目，嘉宾聊生活与时事。", "粤语 聊天 轻松 香港"], t: ["維港夜話", "粵語談話節目，嘉賓聊生活與時事。", "粵語 聊天 輕鬆 香港"],
+    e: ["Harbour Talk", "A Cantonese talk show where guests discuss life and current events.", "cantonese talk light hong kong"], pin: "weigang yehua" },
+  { id: 17, r: "hk", g: "news", hue: 205, eps: 400, isNew: true, year: 2026,
+    s: ["香港今日", "粤语新闻，每天早晚两次更新。", "粤语 新闻 时事 香港"], t: ["香港今日", "粵語新聞，每天早晚兩次更新。", "粵語 新聞 時事 香港"],
+    e: ["Hong Kong Today", "Cantonese news, updated morning and evening.", "cantonese news hong kong"], pin: "xianggang jinri" },
+  { id: 18, r: "hk", g: "life", hue: 45, eps: 20, isNew: false, year: 2025,
+    s: ["点心大师", "师傅示范点心做法，从虾饺到蛋挞。", "美食 粤语 点心 做饭"], t: ["點心大師", "師傅示範點心做法，從蝦餃到蛋撻。", "美食 粵語 點心 做飯"],
+    e: ["Dim Sum Masters", "Masters show how dim sum is made, from shrimp dumplings to egg tarts.", "food cantonese dim sum cooking"], pin: "dianxin dashi" },
+  { id: 20, r: "hk", g: "kids", hue: 60, eps: 48, isNew: false, year: 2024,
+    s: ["广东话儿歌", "用粤语唱儿歌，适合教孩子说广东话。", "儿童 粤语 儿歌 学中文"], t: ["廣東話兒歌", "用粵語唱兒歌，適合教孩子說廣東話。", "兒童 粵語 兒歌 學中文"],
+    e: ["Cantonese Rhymes", "Nursery rhymes in Cantonese, good for teaching kids the language.", "kids cantonese rhymes learning"], pin: "guangdonghua erge" }
+];
+const CHAN = { s: "示例频道", t: "示例頻道", e: "Sample channel" };
+
+const state = {
+  lang: LS.get("nh-lang") || "s", view: "home", arg: null, ep: 1, tab: "eps", signedIn: false, q: "", mode: "search", sreg: "all", heroI: 0,
+  progress: { 3: { ep: 7, pct: 62 }, 13: { ep: 9, pct: 30 }, 6: { ep: 4, pct: 85 } },
+  watched: { 3: 6, 13: 8, 6: 3 },
+  later: [1, 15, 18], favs: [9, 13], custom: { name: { s: "妈妈的节目", t: "媽媽的節目", e: "Mom's shows" }, ids: [5, 9, 3] },
+  following: [13, 16], menuOpen: false
+};
+if (!["s", "t", "e"].includes(state.lang)) state.lang = "s";
+const $ = (s, r = document) => r.querySelector(s);
+const view = $("#view");
+const byId = id => SHOWS.find(s => s.id === id);
+const inReg = r => SHOWS.filter(s => s.r === r);
+const T = (k, ...a) => { const v = L[state.lang][k]; return typeof v === "function" ? v(...a) : v; };
+const title = s => s[state.lang][0];
+const desc = s => s[state.lang][1];
+const tags = s => s[state.lang][2].split(" ");
+const sub = s => state.lang === "e" ? "" : s.e[0];
+const bg = h => `background:linear-gradient(160deg,hsl(${h} 48% 40%),hsl(${(h + 34) % 360} 52% 22%))`;
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const dateLabel = i => i === 0 ? T("today") : i === 1 ? T("yesterday") : T("date", 23 - i);
+const nextEpOf = s => state.progress[s.id] ? state.progress[s.id].ep : (state.watched[s.id] || 0) + 1;
+const I = {
+  play: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15a1 1 0 001.5.86l12-7.5a1 1 0 000-1.72l-12-7.5A1 1 0 007 4.5z"/></svg>',
+  bell: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 1112 0c0 7 3 8 3 8H3s3-1 3-8M10 20a2 2 0 004 0"/></svg>',
+  plus: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>',
+  check: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg>',
+  share: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v7a1 1 0 001 1h14a1 1 0 001-1v-7M16 6l-4-4-4 4M12 2v13"/></svg>',
+  flag: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4M5 4h11l-2 4 2 4H5"/></svg>',
+  user: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4.5-6 8-6s7 2 8 6"/></svg>',
+  left: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>',
+  right: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>',
+  info: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.01"/></svg>'
+};
+
+function card(s, o = {}) {
+  const prog = o.pct != null ? `<div class="progress"><i style="width:${o.pct}%"></i></div>` : "";
+  const tag = o.tag === "genre" ? T(s.g) : T(s.r);
+  return `<button class="card" data-show="${s.id}" ${o.ep ? `data-ep="${o.ep}"` : ""}>
+    <div class="poster" style="${bg(s.hue)}">
+      <span class="tag">${tag}</span>${s.isNew && o.pct == null ? `<span class="new">${T("today")}</span>` : ""}
+      <div class="zh">${title(s)}</div>${prog}
+      <span class="pl"><i>${I.play}</i></span>
+    </div>
+    <div class="meta"><b>${title(s)}</b><span>${o.sub || [sub(s), T("epsShort", s.eps)].filter(Boolean).join(" · ")}</span></div></button>`;
+}
+function row(h, hs, items, more) {
+  return `<section class="row"><div class="row-head"><h2>${h}${hs ? `<span>${hs}</span>` : ""}</h2>${more ? `<button data-go="${more}">${T("more")}</button>` : ""}</div>
+    <div class="rail"><button class="arrow l" data-scroll="-1" aria-label="Scroll left">${I.left}</button>
+    <div class="scroller">${items}</div>
+    <button class="arrow r" data-scroll="1" aria-label="Scroll right">${I.right}</button></div></section>`;
+}
+const contCards = () => Object.entries(state.progress).map(([id, p]) => card(byId(+id), { pct: p.pct, ep: p.ep, sub: `${T("epN", p.ep)} · ${p.pct}%` })).join("");
+
+function hero(s, dotsHtml = "") {
+  const ne = nextEpOf(s), cont = !!state.progress[s.id];
+  return `<section class="full hero" style="--h:${s.hue}">
+    <div class="hero-art" aria-hidden="true">${title(s)}</div>
+    <div class="wrap hero-in"><div class="hero-body">
+      <div class="badges"><span class="rtag">${T(s.r)}</span><span>${T(s.g)}</span><span>${s.year}</span><span class="off">✓ ${T("official")}</span></div>
+      <h1>${title(s)}</h1>${sub(s) ? `<div class="en">${sub(s)}</div>` : ""}
+      <p>${desc(s)}</p>
+      <div class="actions"><button class="btn play" data-play="${s.id}:${ne}">${I.play}${cont ? T("cont", ne) : T("play")}</button>
+        <button class="btn info" data-show="${s.id}">${I.info}${T("info")}</button></div>
+    </div>${dotsHtml}</div></section>`;
+}
+const homeDots = () => `<div class="dots">${HOMEFEAT.map((id, i) => `<button class="dot" data-hero="${i}" aria-label="${T(byId(id).r)}" aria-pressed="${i === state.heroI}"></button>`).join("")}</div>`;
+
+function home() {
+  const tiles = REG.map(r => `<button class="tile" data-go="region:${r}" style="background:linear-gradient(145deg,hsl(${RHUE[r]} 55% 42%),hsl(${RHUE[r] + 30} 55% 20%))"><b>${T(r)}</b><span>${T("nShows", inReg(r).length)}</span></button>`).join("");
+  const regRows = REG.map(r => row(T("latest", T(r)), "", [...inReg(r)].sort((a, b) => b.isNew - a.isNew).map(s => card(s, { tag: "genre" })).join(""), "region:" + r)).join("");
+  return `${hero(byId(HOMEFEAT[state.heroI]), homeDots())}
+  <div class="wrap"><div class="tiles" aria-label="${T("byRegion")}">${tiles}</div>
+  ${state.signedIn ? row(T("contW"), T("contWs"), contCards()) : ""}
+  ${regRows}
+  <p class="note">${T("note")}</p></div>`;
+}
+
+function region() {
+  const r = state.arg, list = inReg(r), f = byId(FEAT[r]);
+  const ranked = [...list].sort((a, b) => b.isNew - a.isNew || a.id - b.id).slice(0, 10);
+  const top = `<section class="row"><div class="row-head"><h2>${T("top10", T(r))}</h2></div><div class="rail"><button class="arrow l" data-scroll="-1" aria-label="Scroll left">${I.left}</button>
+    <div class="scroller">${ranked.map((s, i) => `<div class="t10"><span class="rank">${i + 1}</span>${card(s, { tag: "genre" })}</div>`).join("")}</div>
+    <button class="arrow r" data-scroll="1" aria-label="Scroll right">${I.right}</button></div></section>`;
+  const genreRows = GENRES.map(g => { const gl = list.filter(s => s.g === g); return gl.length ? row(T(g), T("nShows", gl.length), gl.map(s => card(s, { tag: "genre" })).join("")) : ""; }).join("");
+  return `${hero(f)}<div class="wrap">${top}${genreRows}</div>`;
+}
+
+const hay = s => [s.s.join(" "), s.t.join(" "), s.e.join(" "), s.pin, L.s[s.g], L.t[s.g], L.e[s.g], L.s[s.r], L.t[s.r], L.e[s.r]].join(" ").toLowerCase();
+function matches(q) {
+  const terms = q.trim().toLowerCase().split(/\s+/).filter(Boolean);
+  return terms.length ? SHOWS.filter(s => { const h = hay(s); return terms.every(t => h.includes(t)); }) : [];
+}
+function aiPick(q) {
+  const hits = SHOWS.filter(s => [...s.s[2].split(" "), ...s.t[2].split(" ")].some(w => q.includes(w)));
+  return hits.length ? hits : [byId(3), byId(9), byId(1), byId(7), byId(19)];
+}
+function grouped(list, withWhy) {
+  const regs = state.sreg === "all" ? REG : [state.sreg];
+  return regs.map(r => {
+    const g = list.filter(s => s.r === r); if (!g.length) return "";
+    return `<section class="group"><h2>${T(r)}<span>${T("nShows", g.length)}</span></h2><div class="grid">${g.map(s => withWhy ? `<div>${card(s, { tag: "genre" })}<div class="why">${T("why")}${tags(s).slice(0, 3).join(T("sep"))}</div></div>` : card(s, { tag: "genre" })).join("")}</div></section>`;
+  }).join("");
+}
+function search() {
+  const q = state.q;
+  const seg = `<div class="seg" role="group"><button data-mode="search" aria-pressed="${state.mode === "search"}">${T("search")}</button><button data-mode="ai" aria-pressed="${state.mode === "ai"}">${T("askAI")}</button></div>`;
+  const regs = `<div class="chips">${["all", ...REG].map(r => `<button class="chip" data-sreg="${r}" aria-pressed="${state.sreg === r}">${r === "all" ? T("allRegions") : T(r)}</button>`).join("")}</div>`;
+  let body = "";
+  if (state.mode === "search") {
+    const r = matches(q), shown = r.filter(s => state.sreg === "all" || s.r === state.sreg);
+    body = !q.trim()
+      ? `<div class="empty"><p>${T("searchEmpty")}</p><div class="chips" style="justify-content:center">${CHIPS[state.lang].map(c => `<button class="chip" data-q="${c}">${c}</button>`).join("")}</div></div>`
+      : shown.length ? `<p style="color:var(--muted)">${T("found", shown.length)}: “${esc(q)}”</p>${grouped(shown)}`
+        : `<div class="empty"><span class="logo-chip" style="width:84px;height:84px;margin:0 auto 12px;border-radius:24px"><img src="${LOGO}" width="68" height="68" alt=""></span><p>${T("noRes", esc(q))}</p><button class="btn" data-mode="ai">${T("askBtn")}</button></div>`;
+  } else {
+    const prompt = q.trim() || T("aiDefault"), r = aiPick(prompt);
+    body = `<div class="ai-box"><span class="logo-chip"><img src="${LOGO}" alt=""></span>
+      <div><p><b>“${esc(prompt)}”</b></p><p style="margin-top:6px">${T("aiAnswer", r.length)}</p><span class="preview-note">${T("aiPreview")}</span></div></div>${grouped(r, true)}`;
+  }
+  return `<div class="wrap pad"><h1 style="font-size:28px;margin-bottom:12px">${T("search")}</h1>${seg}${regs}<div style="margin-top:6px">${body}</div></div>`;
+}
+
+function show() {
+  const s = byId(state.arg), w = state.watched[s.id] || 0, p = state.progress[s.id];
+  const ne = nextEpOf(s), top = Math.min(s.eps, ne + 4);
+  const eps = Array.from({ length: 12 }, (_, i) => top - i).filter(n => n > 0);
+  const fol = state.following.includes(s.id), saved = state.later.includes(s.id) || state.favs.includes(s.id) || state.custom.ids.includes(s.id);
+  const more = inReg(s.r).filter(x => x.id !== s.id).sort((a, b) => (b.g === s.g) - (a.g === s.g));
+  const epRows = eps.map(n => {
+    const done = n <= w, i = top - n, cur = p && p.ep === n;
+    return `<button class="ep ${done ? "done" : ""}" data-play="${s.id}:${n}"><span class="n">${n}</span>
+      <span class="thumb" style="${bg(s.hue + (n % 5) * 9)}">${cur ? `<i style="width:${p.pct}%"></i>` : ""}</span>
+      <span class="t"><b>${T("epN", n)} ${title(s)}</b><span>${dateLabel(i)} · ${T("mins", s.g === "news" ? 20 : 42 - (n % 7))}</span></span>
+      <span class="st">${done ? "✓ " + T("done") : cur ? p.pct + "%" : ""}</span></button>`;
+  }).join("");
+  return `<section class="full hero show-hero" style="--h:${s.hue}"><div class="hero-art" aria-hidden="true">${title(s)}</div>
+    <div class="wrap hero-in"><div class="hero-body">
+      <button class="back" style="color:#fff;opacity:.85" data-go="region:${s.r}">‹ ${T(s.r)}</button>
+      <div class="badges"><span class="rtag">${T(s.r)}</span><span>${T(s.g)}</span><span>${s.year}</span><span>${T("epsTotal", s.eps)}</span><span class="off">✓ ${T("official")}</span></div>
+      <h1>${title(s)}</h1>${sub(s) ? `<div class="en">${sub(s)}</div>` : ""}
+      <p>${desc(s)}</p>
+      <div class="actions"><button class="btn play" data-play="${s.id}:${ne}">${I.play}${p ? T("cont", ne) : T("start", ne)}</button>
+        <button class="btn info ${saved ? "on" : ""}" data-tog="later:${s.id}">${saved ? I.check : I.plus}${saved ? T("inList") : T("addList")}</button>
+        <button class="btn info ${fol ? "on" : ""}" data-follow="${s.id}">${I.bell}${fol ? T("following") : T("follow")}</button></div>
+    </div></div></section>
+  <div class="wrap"><div class="tabs" role="group"><button data-tab="eps" aria-pressed="${state.tab === "eps"}">${T("tabEps")}</button><button data-tab="more" aria-pressed="${state.tab === "more"}">${T("tabMore")} · ${T(s.r)}</button></div>
+  ${state.tab === "eps" ? `<div class="eps">${epRows}</div><p style="color:var(--muted);font-size:14px;margin-top:16px">${T("source", CHAN[state.lang])}</p>`
+      : `<div class="grid" style="margin-top:20px">${more.map(x => card(x, { tag: "genre" })).join("")}</div>`}</div>`;
+}
+
+function watch() {
+  const s = byId(state.arg), n = state.ep;
+  const inList = state.later.includes(s.id), fav = state.favs.includes(s.id), inC = state.custom.ids.includes(s.id);
+  const next = [n + 1, n + 2, n + 3].filter(x => x <= s.eps);
+  const more = inReg(s.r).filter(x => x.id !== s.id).sort((a, b) => (b.g === s.g) - (a.g === s.g)).slice(0, 3);
+  const mini = (x, label, subtxt, attr) => `<button class="mini" ${attr}><div class="poster" style="${bg(x.hue)}"><div class="zh">${title(x)}</div></div><div><b>${label}</b><span>${subtxt}</span></div></button>`;
+  return `<div class="wrap pad"><button class="back" data-show="${s.id}">‹ ${title(s)}</button>
+  <div class="split"><div>
+    <div class="player"><div><div class="play">${I.play}</div><b style="font-size:20px">${T("epN", n)} ${title(s)}</b><small>${T("playerNote")}</small></div></div>
+    <h1 style="font-size:26px;margin-top:16px">${T("epN", n)} ${title(s)}</h1>
+    <div style="color:var(--muted)"><span class="official">✓ ${T("official")}</span> · ${T(s.r)} · ${CHAN[state.lang]}</div>
+    <div class="actions">
+      <button class="btn ghost ${inList || fav || inC ? "on" : ""}" data-menu>${inList || fav || inC ? I.check : I.plus}${T("addList")}</button>
+      <button class="btn ghost" data-watched>${I.check}${T("markW")}</button>
+      <button class="btn ghost" data-share>${I.share}${T("share")}</button>
+      <button class="btn ghost" data-report>${I.flag}${T("report")}</button>
+    </div>
+    <div class="menu ${state.menuOpen ? "open" : ""}" style="max-width:340px">
+      <button data-tog="later:${s.id}" aria-pressed="${inList}">${inList ? "✓ " : ""}${T("later")}</button>
+      <button data-tog="favs:${s.id}" aria-pressed="${fav}">${fav ? "✓ " : ""}${T("favs")}</button>
+      <button data-tog="custom:${s.id}" aria-pressed="${inC}">${inC ? "✓ " : ""}${state.custom.name[state.lang]}</button>
+    </div>
+    <p style="max-width:62ch;margin-top:12px">${desc(s)}</p>
+  </div>
+  <aside class="panel"><h3>${T("next")}</h3>
+    ${next.map(x => mini(s, T("epN", x), dateLabel(Math.max(0, n + 4 - x)), `data-play="${s.id}:${x}"`)).join("") || `<p style="color:var(--muted)">${T("caught")}</p>`}
+    <h3 style="margin-top:14px">${T("alsoLike")}</h3>
+    ${more.map(x => mini(x, title(x), `${T(x.g)} · ${T("epsShort", x.eps)}`, `data-show="${x.id}"`)).join("")}
+  </aside></div></div>`;
+}
+
+function lists() {
+  if (!state.signedIn) return `<div class="wrap pad"><div class="signin"><span class="logo-chip"><img src="${LOGO}" alt=""></span>
+    <h1>${T("signinT")}</h1><p>${T("signinS")}</p>
+    <div class="sso"><button data-signin>${T("google")}</button><button data-signin>${T("apple")}</button><button data-signin>${T("facebook")}</button><button data-signin>${T("email")}</button></div>
+    <p style="font-size:14px">${T("signinFine")}</p></div></div>`;
+  const mk = ids => ids.length ? ids.map(id => card(byId(id))).join("") : `<p style="color:var(--muted)">${T("emptyList")}</p>`;
+  return `<div class="wrap pad"><h1 style="font-size:28px">${T("mylist")}</h1>
+  ${row(T("contW"), T("contWs"), contCards())}
+  ${row(T("later"), "", mk(state.later))}
+  ${row(T("favs"), "", mk(state.favs))}
+  ${row(state.custom.name[state.lang], T("customS"), mk(state.custom.ids))}
+  ${row(T("followingRow"), T("followingS"), mk(state.following))}</div>`;
+}
+
+function chrome() {
+  const r = document.documentElement;
+  r.lang = { s: "zh-Hans", t: "zh-Hant", e: "en" }[state.lang];
+  document.querySelectorAll("[data-i18n]").forEach(el => { el.textContent = T(el.dataset.i18n); });
+  $("#q").placeholder = T("ph");
+  document.querySelectorAll("#langSeg button").forEach(b => b.setAttribute("aria-pressed", b.dataset.lang === state.lang));
+  $("#acct").className = "icon-btn" + (state.signedIn ? " avatar" : "");
+  $("#acct").innerHTML = state.signedIn ? "林" : I.user;
+}
+function render() {
+  const v = state.view;
+  const page = v === "home" ? home() : v === "region" ? region() : v === "search" ? search() : v === "show" ? show() : v === "watch" ? watch() : lists();
+  view.innerHTML = page + `<div class="wrap"><div class="foot"><span>${T("langLabel")}</span><div class="seg lang" role="group">${[["s", "简"], ["t", "繁"], ["e", "EN"]].map(([k, l]) => `<button data-lang="${k}" aria-pressed="${k === state.lang}">${l}</button>`).join("")}</div>
+      <button class="btn ghost" data-theme-toggle>${T("theme")}</button><button class="btn ghost" data-large>${T("large")}</button></div></div>`;
+  chrome();
+  const key = v === "region" ? "region:" + state.arg : (v === "show" || v === "watch") ? "region:" + byId(state.arg).r : v;
+  document.querySelectorAll("#nav button, #tabbar button").forEach(b => {
+    b.dataset.go === key ? b.setAttribute("aria-current", "page") : b.removeAttribute("aria-current");
+  });
+}
+function go(v, arg) { state.view = v; if (arg != null) state.arg = arg; state.menuOpen = false; if (v === "show") state.tab = "eps"; render(); window.scrollTo({ top: 0 }); }
+function toggle(list, id) { const i = list.indexOf(id); i < 0 ? list.push(id) : list.splice(i, 1); }
+function theme() {
+  const r = document.documentElement;
+  r.dataset.theme = r.dataset.theme === "light" ? "dark" : "light";
+}
+
+document.addEventListener("click", e => {
+  const t = e.target.closest("button, .card"); if (!t) return;
+  const d = t.dataset;
+  if (d.scroll) { const sc = t.parentElement.querySelector(".scroller"); sc.scrollBy({ left: d.scroll * sc.clientWidth * .85, behavior: "smooth" }); return; }
+  if (d.lang) { state.lang = d.lang; LS.set("nh-lang", d.lang); render(); return; }
+  if (d.themeToggle != null) { theme(); return; }
+  if (d.large != null) { document.documentElement.classList.toggle("large"); return; }
+  if (d.hero) { state.heroI = +d.hero; render(); return; }
+  if (d.tab) { state.tab = d.tab; render(); return; }
+  if (d.sreg) { state.sreg = d.sreg; render(); return; }
+  if (d.go) { const [v, a] = d.go.split(":"); go(v, a); return; }
+  if (d.q) { state.q = d.q; state.view = "search"; state.mode = "search"; $("#q").value = d.q; render(); window.scrollTo({ top: 0 }); return; }
+  if (d.mode) { state.mode = d.mode; render(); return; }
+  if (d.play) { const [id, n] = d.play.split(":").map(Number); state.ep = n; go("watch", id); return; }
+  if (d.show) { if (d.ep) { state.ep = +d.ep; go("watch", +d.show); } else go("show", +d.show); return; }
+  if (d.follow) { toggle(state.following, +d.follow); render(); return; }
+  if (d.signin != null) { state.signedIn = true; render(); return; }
+  if (d.menu != null) { state.menuOpen = !state.menuOpen; render(); return; }
+  if (d.tog) { const [k, id] = d.tog.split(":"); toggle(k === "custom" ? state.custom.ids : state[k], +id); render(); return; }
+  if (d.watched != null) { state.watched[state.arg] = Math.max(state.watched[state.arg] || 0, state.ep); t.textContent = T("markedW"); return; }
+  if (d.share != null) { t.textContent = T("copied"); return; }
+  if (d.report != null) { t.textContent = T("reported"); return; }
+});
+$("#searchForm").addEventListener("submit", e => { e.preventDefault(); state.q = $("#q").value; state.view = "search"; render(); window.scrollTo({ top: 0 }); });
+$("#q").addEventListener("input", e => { state.q = e.target.value; state.view = "search"; render(); });
+$("#themeBtn").addEventListener("click", theme);
+render();
+</script>

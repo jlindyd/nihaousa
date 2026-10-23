@@ -1,0 +1,12 @@
+# Local tooling and logs
+.claude/
+pwsh.log
+
+# Never commit secrets or local settings (the web app has its own .gitignore too)
+.env
+.env.*
+!.env.example
+
+# OS
+.DS_Store
+Thumbs.db
