@@ -121,7 +121,9 @@ function choosePlaylist(v: RawVideo, parsed: ParsedTitle, playlists: RawPlaylist
 }
 
 export function groupChannel(channel: ChannelEntry, videos: RawVideo[], playlists: RawPlaylist[], opts: { minEpisodes?: number } = {}): GroupResult {
-  const minEpisodes = opts.minEpisodes ?? 2;
+  // Several separate shows can come out of one channel, so a lone video is probably a stray clip.
+  // A channel marked as one program is the show already, so one episode is enough.
+  const minEpisodes = opts.minEpisodes ?? (channel.singleShow ? 1 : 2);
   const review: ReviewItem[] = [];
   const flag = (v: RawVideo, reason: string, suggestion?: string) =>
     review.push({ videoId: v.id, title: v.title, channel: channel.name, reason, suggestion });

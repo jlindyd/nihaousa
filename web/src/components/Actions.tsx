@@ -32,7 +32,9 @@ export function WatchActions({ showId, ep }: { showId: number; ep: number }) {
   const [note, setNote] = useState<"" | "marked" | "copied" | "reported">("");
   const later = useIdList(KEYS.later);
   const favs = useIdList(KEYS.favs);
+  const follow = useIdList(KEYS.follow);
   const inList = later.has(showId) || favs.has(showId);
+  const following = follow.has(showId);
 
   const share = async () => {
     try {
@@ -46,6 +48,9 @@ export function WatchActions({ showId, ep }: { showId: number; ep: number }) {
   return (
     <>
       <div className="actions">
+        <button className={`btn ${following ? "ghost" : ""}`} onClick={() => follow.toggle(showId)}>
+          <BellIcon />{following ? t("following") : t("follow")}
+        </button>
         <button className={`btn ghost ${inList ? "on" : ""}`} onClick={() => setOpen((o) => !o)}>
           {inList ? <CheckIcon /> : <PlusIcon />}{t("addList")}
         </button>

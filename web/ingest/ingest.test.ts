@@ -119,6 +119,13 @@ test("a single-show channel becomes one show named after the channel", () => {
   assert.deepEqual(r.shows[0].episodes.map((e) => e.number), [1, 2, 3]);
 });
 
+test("one episode is enough for a channel marked as a single show, but not for a lone video elsewhere", () => {
+  const program: ChannelEntry = { name: "木曜4超玩", id: "UCprog", region: "tw", singleShow: true };
+  const one = [video("p1", "特別企劃 上集")];
+  assert.equal(groupChannel(program, one, []).shows.length, 1);
+  assert.equal(groupChannel({ ...program, singleShow: false }, [video("p2", "《孤單的節目》第1集")], []).shows.length, 0);
+});
+
 test("emoji decoration is stripped from show and playlist names", () => {
   assert.equal(cleanPlaylistTitle("🏄‍♀古城往事 全集🏄"), "古城往事");
   assert.equal(parseTitle("🔥《老友记事》🔥 第3集").showName, "老友记事");

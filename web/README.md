@@ -36,7 +36,7 @@ data/channels.json  →  fetch  →  data/raw/  →  build  →  data/catalog.ge
 3. Run:
 
 ```bash
-npm run ingest -- run      # resolve ids, fetch the last 7 days from YouTube, build the catalog
+npm run ingest -- run      # resolve ids, fetch the last 30 days from YouTube, build the catalog
 npm run ingest -- fetch --days 365   # bulk load further back (earlier videos are kept and refreshed)
 npm run ingest -- status   # what is imported, how old the data is
 npm run ingest -- health   # re-check every video, then run `build` again
@@ -56,7 +56,7 @@ What the build does:
 
 Channel settings worth knowing (see `ingest/types.ts` for all): `singleShow: true` for a channel that is one program (a daily show or a news broadcast), `genre`, `minMinutes`, `sinceDays`, `excludeTitle`.
 
-Quota: a week of one channel costs roughly 40 to 100 units, a full catch-up of 24,000 videos roughly 1,000. The default daily quota is 10,000 units.
+Quota: a month of one channel costs roughly 100 to 200 units, a full catch-up of 24,000 videos roughly 1,000. The default daily quota is 10,000 units.
 
 ## Sign-in
 

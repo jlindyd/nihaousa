@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { getShow } from "@/lib/catalog";
-import { KEYS, useIdList, useProgress } from "@/lib/store";
+import { KEYS, useIdList, useProgress, write } from "@/lib/store";
 import type { Show } from "@/lib/types";
 import { useAuth } from "./AuthProvider";
 import { Card } from "./Card";
@@ -35,21 +35,41 @@ export function MyLists() {
   const later = useIdList(KEYS.later);
   const favs = useIdList(KEYS.favs);
   const follow = useIdList(KEYS.follow);
-  const section = (title: string, ids: number[], sub?: string) => (
-    <Row title={title} sub={sub}>
-      {ids.length ? (
-        pick(ids).map((s) => <Card key={s.id} show={s} lang={lang} />)
-      ) : (
-        <p style={{ color: "var(--muted)" }}>{t("emptyList")}</p>
-      )}
-    </Row>
-  );
+  const section = (title: string, ids: number[], sub?: string) => {
+    const shows = pick(ids);
+    return (
+      <Row title={title} sub={sub}>
+        {shows.length ? (
+          shows.map((s) => <Card key={s.id} show={s} lang={lang} />)
+        ) : (
+          <p style={{ color: "var(--muted)" }}>{t("emptyList")}</p>
+        )}
+      </Row>
+    );
+  };
+
+  // Saved shows the catalog no longer has (taken down, or no recent episodes). They stay saved
+  // but cannot be drawn, so say so instead of hiding them silently.
+  const missing = [...new Set([...later.ids, ...favs.ids, ...follow.ids])].filter((id) => !getShow(id));
+  const clearMissing = () => {
+    const keep = (ids: number[]) => ids.filter((id) => !!getShow(id));
+    write(KEYS.later, keep(later.ids));
+    write(KEYS.favs, keep(favs.ids));
+    write(KEYS.follow, keep(follow.ids));
+  };
+
   return (
     <>
       <ContinueRow />
       {section(t("later"), later.ids)}
       {section(t("favs"), favs.ids)}
       {section(t("followingRow"), follow.ids, t("customS"))}
+      {missing.length > 0 && (
+        <div className="prompt">
+          <p>{t("missingSaved", missing.length)}</p>
+          <button className="btn ghost" onClick={clearMissing}>{t("clearMissing")}</button>
+        </div>
+      )}
       {configured && loading ? null : configured && !user ? (
         <div className="prompt">
           <p>{t("signInPrompt")}</p>

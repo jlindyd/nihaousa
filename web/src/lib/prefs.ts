@@ -6,6 +6,8 @@ export interface Prefs {
   lang: Lang;
   theme: "dark" | "light";
   large: boolean;
+  /** Big player on the watch page. On unless the viewer turned it off. */
+  wide: boolean;
 }
 
 /** Reads display preferences from cookies. Server only. */
@@ -16,5 +18,6 @@ export async function getPrefs(): Promise<Prefs> {
     lang: lang && LANGS.includes(lang) ? lang : "s",
     theme: jar.get("nh-theme")?.value === "light" ? "light" : "dark",
     large: jar.get("nh-large")?.value === "1",
+    wide: jar.get("nh-wide")?.value !== "0",
   };
 }

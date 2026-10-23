@@ -20,7 +20,7 @@ export interface ChannelEntry {
   excludeTitle?: string[];
   /** Max playlists to read per channel. Default 25. */
   maxPlaylists?: number;
-  /** Only read uploads from the last N days. Default 7. Later runs with a larger number catch up on older videos. */
+  /** Only read uploads from the last N days. Default 30. Later runs with a larger number catch up on older videos. */
   sinceDays?: number;
   /** Safety cap on uploads read in one run. Default 3000. */
   maxUploads?: number;

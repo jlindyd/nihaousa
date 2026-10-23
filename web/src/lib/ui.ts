@@ -8,7 +8,7 @@ export const posterBg = (hue: number): CSSProperties => ({
 /** 16:9 thumbnail YouTube serves for a video (320x180). */
 export const thumbUrl = (videoId: string) => `https://i.ytimg.com/vi/${videoId}/mqdefault.jpg`;
 
-export function setPref(name: "nh-lang" | "nh-theme" | "nh-large", value: string) {
+export function setPref(name: "nh-lang" | "nh-theme" | "nh-large" | "nh-wide", value: string) {
   document.cookie = `${name}=${value}; path=/; max-age=31536000; samesite=lax`;
 }
 

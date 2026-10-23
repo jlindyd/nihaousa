@@ -1,13 +1,41 @@
 {
-  "generatedAt": "2026-10-23T21:46:16.773Z",
-  "expiresAt": "2026-11-22T21:37:44.989Z",
+  "generatedAt": "2026-10-23T23:19:57.427Z",
+  "expiresAt": "2026-11-22T23:19:27.371Z",
   "shows": [
+    {
+      "id": 117881790,
+      "r": "tw",
+      "g": "variety",
+      "hue": 150,
+      "eps": 3,
+      "isNew": false,
+      "year": 2026,
+      "s": [
+        "木曜4超玩",
+        "《星级游戏：全台$69搜查中》10/14火热开玩 找星级币 扫描累积 $69抽星级点 简单三步骤，就有机会免费吃星级美味 限时限量 10/14立即开始游戏！ ---------------------------------------- 支持木曜加入深度会员： 请订阅我们的频道",
+        "木曜4超玩 邰智源 林柏升KID 泱泱 温妮 综艺节目"
+      ],
+      "t": [
+        "木曜4超玩",
+        "《星級遊戲：全台$69搜查中》10/14火熱開玩 找星級幣 掃描累積 $69抽星級點 簡單三步驟，就有機會免費吃星級美味 限時限量 10/14立即開始遊戲！ ---------------------------------------- 支持木曜加入深度會員： 請訂閱我們的頻道",
+        "木曜4超玩 邰智源 林柏昇KID 泱泱 溫妮 綜藝節目"
+      ],
+      "e": [
+        "Mu Yao 4 Chao Wan",
+        "《星級遊戲：全台$69搜查中》10/14火熱開玩 找星級幣 掃描累積 $69抽星級點 簡單三步驟，就有機會免費吃星級美味 限時限量 10/14立即開始遊戲！ ---------------------------------------- 支持木曜加入深度會員： 請訂閱我們的頻道",
+        "木曜4超玩 邰智源 林柏昇KID 泱泱 溫妮 綜藝節目"
+      ],
+      "pin": "muyao4chaowan mu yao 4 chao wan my4cw",
+      "channel": "木曜4超玩",
+      "channelId": "UCLW_SzI9txZvtOFTPDswxqg",
+      "thumb": "dHyYYoC2iY4"
+    },
     {
       "id": 223012940,
       "r": "tw",
       "g": "variety",
       "hue": 140,
-      "eps": 16,
+      "eps": 71,
       "isNew": true,
       "year": 2026,
       "s": [
@@ -32,118 +60,526 @@
     }
   ],
   "episodes": {
+    "117881790": [
+      {
+        "number": 3,
+        "minutes": 74,
+        "publishedAt": "2026-10-12T13:30:09Z",
+        "youtubeId": "dHyYYoC2iY4",
+        "title": "2026第五屆YARTIST全明星運動大會-星級遊戲特別企劃【下集】為了贏，可是沒有極限的！Ft.美麗本人/阿樂/蛇丸/胡椒/Fred/洋蔥/騏哥/Dcard/品子/奎丁/陳詩雅/莎白/麻由/尹到怡"
+      },
+      {
+        "number": 2,
+        "minutes": 70,
+        "publishedAt": "2026-10-08T13:30:06Z",
+        "youtubeId": "cOTefE4PYD8",
+        "title": "2026第五屆YARTIST全明星運動大會-星級遊戲特別企劃【上集】這次不止比體力還要比眼力！Ft.美麗本人/阿樂/蛇丸/胡椒/Fred/洋蔥/騏哥/Dcard/品子/奎丁/陳詩雅/莎白/麻由/尹到怡"
+      },
+      {
+        "number": 1,
+        "minutes": 31,
+        "publishedAt": "2026-09-24T13:30:08Z",
+        "youtubeId": "ixzM3bEPnIk",
+        "title": "電鍋料理挑戰!! 泱泱、短今、黃可欣誰的菜色能勝出🍲二百人份量加餐任務三人究竟能不能成功😮 - 日行一膳EP.3 大同電鍋篇"
+      }
+    ],
     "223012940": [
       {
-        "number": 16,
+        "number": 71,
         "minutes": 47,
         "publishedAt": "2026-10-23T04:00:10Z",
         "youtubeId": "mLOWMfT9QRs",
         "title": "老朋友阿松帶路吃台東！在地人生魚片早餐、純米做手工米台目、縱谷風吹的一夜干、梅干扣肉配悶雞｜#林美秀#張再興#阿松 SuperTasteTaiwan｜#食尚玩家我們這一家 完整版20261022📍台東"
       },
       {
-        "number": 15,
+        "number": 70,
         "minutes": 12,
         "publishedAt": "2026-10-23T10:00:27Z",
         "youtubeId": "kca5bp3gves",
         "title": "【台東】彩色肉圓超吸睛 紫薯芋頭全入餡【食尚玩家】20261022(1/3)"
       },
       {
-        "number": 14,
+        "number": 69,
         "minutes": 13,
         "publishedAt": "2026-10-23T10:15:29Z",
         "youtubeId": "hcpoodpBfsU",
         "title": "【台東】一條鬼頭刀魚 吃遍全世界【食尚玩家】20261022(2/3)"
       },
       {
-        "number": 13,
+        "number": 68,
         "minutes": 17,
         "publishedAt": "2026-10-23T10:30:00Z",
         "youtubeId": "N289gjnn0Ns",
         "title": "【台東】關山必吃 縱谷風吹的一夜干【食尚玩家】20261022(3/3)"
       },
       {
-        "number": 12,
+        "number": 67,
         "minutes": 47,
         "publishedAt": "2026-10-22T04:00:10Z",
         "youtubeId": "mqY3QXRXSRc",
         "title": "雙北藏很深的美味！鮮蝦韭黃傳奇水餃、伊朗老闆的夢幻紅燒牛三寶、堆成山的百元羊肉炒麵｜#納豆#曾子余#王敏淳 SuperTasteTaiwan｜#食尚玩家PLAYON 完整版20261021📍台北、新北"
       },
       {
-        "number": 11,
+        "number": 66,
         "minutes": 10,
         "publishedAt": "2026-10-22T10:00:27Z",
         "youtubeId": "w0lSxgFLPXM",
         "title": "【林口】隱身洗車場 在地人瘋搶高粱酒香腸【食尚玩家】20261021(1/3)"
       },
       {
-        "number": 10,
+        "number": 65,
         "minutes": 19,
         "publishedAt": "2026-10-22T10:15:21Z",
         "youtubeId": "Ljpek5eJiHQ",
         "title": "【樹林】隱藏版海陸倉庫 現烤頂級A5和牛【食尚玩家】20261021(2/3)"
       },
       {
-        "number": 9,
+        "number": 64,
         "minutes": 16,
         "publishedAt": "2026-10-22T10:30:01Z",
         "youtubeId": "yIDlGKxs1Pk",
         "title": "【臺北】海產店耽誤傳奇水餃 鮮蝦韭黃水餃【食尚玩家】20261021(3/3)"
       },
       {
-        "number": 8,
+        "number": 63,
         "minutes": 47,
         "publishedAt": "2026-10-21T04:00:08Z",
         "youtubeId": "ttfHcoWKq8Q",
         "title": "宮廟旁美食搜查！24小時鴨肉店、超浮誇豬腳飯、50元有找營養三明治、極厚漢堡排｜#風田#朵拉#阿龐 SuperTasteTaiwan｜#食尚玩家PLAYON 完整版20261020📍桃園、彰化、台中"
       },
       {
-        "number": 7,
+        "number": 62,
         "minutes": 13,
         "publishedAt": "2026-10-21T10:00:18Z",
         "youtubeId": "5X0Gg3IjmuQ",
         "title": "【桃園】高CP值 超巨蚵仔大腸麵線【食尚玩家】20261020(1/3)"
       },
       {
-        "number": 6,
+        "number": 61,
         "minutes": 10,
         "publishedAt": "2026-10-21T10:15:25Z",
         "youtubeId": "aBbB8rQ44zs",
         "title": "【台中】老闆兼濟公？台中超浮誇豬腳飯【食尚玩家】20261020(2/3)"
       },
       {
-        "number": 5,
+        "number": 60,
         "minutes": 12,
         "publishedAt": "2026-10-21T10:30:01Z",
         "youtubeId": "9RWSmxAM6B0",
         "title": "【台中】隱身市場土地公廟旁 極厚爆汁漢堡排【食尚玩家】20261020(3/3)"
       },
       {
-        "number": 4,
+        "number": 59,
         "minutes": 47,
         "publishedAt": "2026-10-20T04:00:07Z",
         "youtubeId": "FiWS_eQ1xWc",
         "title": "峇里島最美必推秘境美食！IG打卡景點報你知！｜#李易 #大文 #房思瑜 SuperTasteTaiwan｜#食尚玩家瘋狂總部 完整版 20261019📍峇里島"
       },
       {
-        "number": 3,
+        "number": 58,
         "minutes": 20,
         "publishedAt": "2026-10-20T11:00:04Z",
         "youtubeId": "K4RtMs5X0V4",
         "title": "大溪限定撿便宜 GO~SHOOT！排隊名店豆腐酪、百年黑豆干獨門二滷技術口感提升、媽媽的私房有機超市！｜SuperTaste Taiwan｜#食尚玩家#曾子余【網路獨家】20261019"
       },
       {
-        "number": 2,
+        "number": 57,
         "minutes": 59,
         "publishedAt": "2026-10-18T09:00:15Z",
         "youtubeId": "2Z_TaANR1nU",
         "title": "屏東東港NO.1美食！藏身漁港超厚切生魚片、賭你沒吃過最狂下午茶、無國界創意乾餛飩、老字號手路菜餐廳！｜SuperTaste Taiwan｜#食尚玩家【美食攏底家】20261018"
       },
       {
-        "number": 1,
+        "number": 56,
         "minutes": 57,
         "publishedAt": "2026-10-17T09:00:06Z",
         "youtubeId": "sjvmPGbrCWg",
         "title": "那些年食尚玩家的關島日記！陽光、沙灘、比基尼！瘋狂玩水挑戰滑水道！戀人岬無敵美景！｜SuperTaste Taiwan｜#食尚玩家【美食攏底家】20261017"
+      },
+      {
+        "number": 55,
+        "minutes": 47,
+        "publishedAt": "2026-10-16T04:00:06Z",
+        "youtubeId": "Onxebl5rn7A",
+        "title": "屏東平價小吃集合🤩80年不敗碗粿、超Q彈豬腳、豆腐大變身、銷魂生蛋黃拌豬油飯｜#林美秀#張再興#Ozone#林佳辰 SuperTasteTaiwan｜#食尚玩家我們這一家 完整版20261015📍屏東"
+      },
+      {
+        "number": 54,
+        "minutes": 16,
+        "publishedAt": "2026-10-16T10:00:10Z",
+        "youtubeId": "1AvwxfFXLpQ",
+        "title": "【屏東】榕樹下神店銅板價辦桌【食尚玩家】20261015(1/3)"
+      },
+      {
+        "number": 53,
+        "minutes": 12,
+        "publishedAt": "2026-10-16T10:15:27Z",
+        "youtubeId": "aCm56TuRz9I",
+        "title": "【屏東】豆腐創意吃法大爆發【食尚玩家】20261015(2/3)"
+      },
+      {
+        "number": 52,
+        "minutes": 14,
+        "publishedAt": "2026-10-16T10:30:02Z",
+        "youtubeId": "Jzp-DjIbzss",
+        "title": "【屏東】生蛋黃拌出好滋味【食尚玩家】20261015(3/3)"
+      },
+      {
+        "number": 51,
+        "minutes": 47,
+        "publishedAt": "2026-10-15T04:00:08Z",
+        "youtubeId": "hIxqaIJx8Xc",
+        "title": "高雄市場大比拼⚔️傳承50年油飯界天花板、在地人宵夜藥膳燉排骨、阿嬤祖傳炸醬澎派鍋燒意麵｜#納豆#曾子余#王敏淳 SuperTasteTaiwan｜#食尚玩家PLAYON 完整版20261014📍高雄"
+      },
+      {
+        "number": 50,
+        "minutes": 14,
+        "publishedAt": "2026-10-15T10:00:32Z",
+        "youtubeId": "LfJI8SSiGGY",
+        "title": "【高雄】開賣就秒殺！超人氣銷魂豬腳【食尚玩家】20261014(1/3)"
+      },
+      {
+        "number": 49,
+        "minutes": 14,
+        "publishedAt": "2026-10-15T10:15:36Z",
+        "youtubeId": "JtlKuqaPMno",
+        "title": "【高雄】在地人私藏藥膳排骨【食尚玩家】20261014(2/3)"
+      },
+      {
+        "number": 48,
+        "minutes": 15,
+        "publishedAt": "2026-10-15T10:30:00Z",
+        "youtubeId": "YiXdarAF6bM",
+        "title": "【高雄】每日現烤鮮魚鹹豬肉【食尚玩家】20261014(3/3)"
+      },
+      {
+        "number": 47,
+        "minutes": 47,
+        "publishedAt": "2026-10-14T04:00:21Z",
+        "youtubeId": "zJsHtzZW_AQ",
+        "title": "新莊四維市場PK中和福和宮市集！正宗北港生炒鴨肉焿、超人氣爆汁小籠湯包、韓式辣雞爪年糕｜#風田#朵拉#阿龐 SuperTasteTaiwan｜#食尚玩家PLAYON 完整版20261013📍新北"
+      },
+      {
+        "number": 46,
+        "minutes": 9,
+        "publishedAt": "2026-10-14T10:00:20Z",
+        "youtubeId": "Rab-WAngavw",
+        "title": "【新北】銷魂爆漿總匯蛋餅【食尚玩家】20261013(1/3)"
+      },
+      {
+        "number": 45,
+        "minutes": 8,
+        "publishedAt": "2026-10-14T10:15:36Z",
+        "youtubeId": "UiZ6HP1SsCw",
+        "title": "【新北】超人氣爆汁小籠湯包【食尚玩家】20261013(2/3)"
+      },
+      {
+        "number": 44,
+        "minutes": 24,
+        "publishedAt": "2026-10-14T10:30:29Z",
+        "youtubeId": "ofmvYcj_gVc",
+        "title": "【新北】古早味雞腿油飯【食尚玩家】20261013(3/3)"
+      },
+      {
+        "number": 43,
+        "minutes": 47,
+        "publishedAt": "2026-10-13T04:00:07Z",
+        "youtubeId": "DlR4CLjuosU",
+        "title": "拍謝！我們公開了 花蓮人不願公開的美食名單！｜#林莎 #大文 #李易 SuperTasteTaiwan｜#食尚玩家瘋狂總部 完整版 20261012📍花蓮"
+      },
+      {
+        "number": 42,
+        "minutes": 52,
+        "publishedAt": "2026-10-11T09:00:37Z",
+        "youtubeId": "TmEYAN7oBfY",
+        "title": "宜蘭復興路神級美食！4.8顆星日式料理、傳承甲子製麵技術超強水餃、皮薄餡多韭菜盒、隱身在咖啡店正宗越式河粉、宮廟裡日式刨冰｜SuperTaste Taiwan｜#食尚玩家【美食攏底家】20261011"
+      },
+      {
+        "number": 41,
+        "minutes": 45,
+        "publishedAt": "2026-10-10T09:00:24Z",
+        "youtubeId": "0R98mBe5ieY",
+        "title": "國慶大會要吃甚麼？總統府附近美食攻略！官員最愛快炒店、必吃魷魚羹、芒果尬荔枝壽司、銅板小食上海酒釀餅、101草莓塔｜SuperTaste Taiwan｜#食尚玩家【美食攏底家】20261010"
+      },
+      {
+        "number": 40,
+        "minutes": 47,
+        "publishedAt": "2026-10-09T04:00:10Z",
+        "youtubeId": "wuIEuWju3ZA",
+        "title": "高CP值美食暴走！30年蝦仁飯、Q彈手打麵征服老饕、跳跳糖剉冰？必比登燒肉粥｜#林美秀#張再興#Ozone#周祖安 SuperTasteTaiwan｜#食尚玩家我們這一家 完整版20261008📍台中"
+      },
+      {
+        "number": 39,
+        "minutes": 11,
+        "publishedAt": "2026-10-09T10:00:04Z",
+        "youtubeId": "sKuKe7fOXwg",
+        "title": "【台中】30年府城蝦仁飯【食尚玩家】20261008(1/3)"
+      },
+      {
+        "number": 38,
+        "minutes": 20,
+        "publishedAt": "2026-10-09T10:15:36Z",
+        "youtubeId": "IoJGbKTRLws",
+        "title": "【台中】在地老司機都愛這一味【食尚玩家】20261008(2/3)"
+      },
+      {
+        "number": 37,
+        "minutes": 13,
+        "publishedAt": "2026-10-09T10:30:37Z",
+        "youtubeId": "dHqXbE5pvmY",
+        "title": "【台中】必比登燒肉粥【食尚玩家】20261008(3/3)"
+      },
+      {
+        "number": 36,
+        "minutes": 47,
+        "publishedAt": "2026-10-08T04:00:08Z",
+        "youtubeId": "OHvR-XD5c6I",
+        "title": "特搜司機口袋美食！爆漿榴槤芝士餅、一吃入魂脆皮肉圓蓋飯、幕斯尬涼麵？內行才知道熱炒烏骨雞｜#納豆#曾子余#王敏淳 SuperTasteTaiwan｜#食尚玩家PLAYON 完整版20261007📍雲林"
+      },
+      {
+        "number": 35,
+        "minutes": 11,
+        "publishedAt": "2026-10-08T10:00:11Z",
+        "youtubeId": "c6Xus99UmO8",
+        "title": "【雲林】濃郁爆漿榴槤芝士餅【食尚玩家】20261007(1/3)"
+      },
+      {
+        "number": 34,
+        "minutes": 15,
+        "publishedAt": "2026-10-08T10:15:30Z",
+        "youtubeId": "zdQbWhjxDpE",
+        "title": "【雲林】熱賣百年冰料店【食尚玩家】20261007(2/3)"
+      },
+      {
+        "number": 33,
+        "minutes": 15,
+        "publishedAt": "2026-10-08T10:30:36Z",
+        "youtubeId": "QSSbLI30CBM",
+        "title": "【雲林】超低調熱炒烏骨雞【食尚玩家】20261007(3/3)"
+      },
+      {
+        "number": 32,
+        "minutes": 47,
+        "publishedAt": "2026-10-07T04:00:09Z",
+        "youtubeId": "iN_zF6_jUng",
+        "title": "中台灣俗擱大碗小吃！比臉大超佛心雞排、鹿港在地人早餐芋丸、無極限臭豆腐蛋餅煎餃｜#風田#朵拉#阿龐 SuperTasteTaiwan｜#食尚玩家PLAYON 完整版20261006📍台中、彰化、苗栗"
+      },
+      {
+        "number": 31,
+        "minutes": 18,
+        "publishedAt": "2026-10-07T10:00:24Z",
+        "youtubeId": "xwetYVWDPmo",
+        "title": "【台中】比臉還大超佛心雞排【食尚玩家】20261006(1/3)"
+      },
+      {
+        "number": 30,
+        "minutes": 11,
+        "publishedAt": "2026-10-07T10:15:12Z",
+        "youtubeId": "o-x4USEjVTQ",
+        "title": "【台中】銅板價炸彈蔥油餅【食尚玩家】20261006(2/3)"
+      },
+      {
+        "number": 29,
+        "minutes": 13,
+        "publishedAt": "2026-10-07T10:30:30Z",
+        "youtubeId": "cUWxxIdNw9I",
+        "title": "【台中】超巨大臉盆冰【食尚玩家】20261006(3/3)"
+      },
+      {
+        "number": 28,
+        "minutes": 47,
+        "publishedAt": "2026-10-06T04:00:09Z",
+        "youtubeId": "D3DQaxREyAk",
+        "title": "關島限定海陸空冒險！浮潛旁邊有鯊魚？！體驗湯姆克魯斯空中跳傘！｜#曾子余#六月#林莎#是元介 SuperTasteTaiwan｜#食尚玩家關島特輯 完整版 20261005📍關島"
+      },
+      {
+        "number": 27,
+        "minutes": 45,
+        "publishedAt": "2026-10-04T11:00:13Z",
+        "youtubeId": "6PsjLSaT2xE",
+        "title": "南投竹山美食清單！火候最強窯烤雞、竹筒冰淇淋、民國37年老屋變身創意台味餐廳、老宅海鮮米粉湯、被牛排耽誤的炸雞店｜SuperTaste Taiwan｜#食尚玩家【美食攏底家】20261004"
+      },
+      {
+        "number": 26,
+        "minutes": 42,
+        "publishedAt": "2026-10-03T09:00:16Z",
+        "youtubeId": "XyQvYpXskpk",
+        "title": "嘉義涼麵8家推薦！美食YouTuber激推第一、蛋奶素也能吃、號稱嘉義白醋涼麵創始店、必點果汁消暑聖品組合｜SuperTaste Taiwan｜#食尚玩家【美食攏底家】20261003"
+      },
+      {
+        "number": 25,
+        "minutes": 29,
+        "publishedAt": "2026-10-03T16:37:39Z",
+        "youtubeId": "9kZfO-CRqIE",
+        "title": "本週逛展必去這裡！超多品牌攤位！曾子余為副業鞠躬哈腰？現場試吃雞肉刺身、季節限定珍奶麻糬、神奇醬料讓煮菜變easy！｜SuperTaste Taiwan｜#食尚玩家#曾子余【網路獨家】20261003"
+      },
+      {
+        "number": 24,
+        "minutes": 48,
+        "publishedAt": "2026-10-02T04:00:08Z",
+        "youtubeId": "UgwcU05-0AU",
+        "title": "家人大團圓😍Ozone合體美食淘汰賽！人氣牛肉麵王者、超狂蝦餡老油條、窯烤天花板烤雞｜#林美秀#張再興#Ozone SuperTasteTaiwan｜#食尚玩家我們這一家 完整版20261001📍桃園"
+      },
+      {
+        "number": 23,
+        "minutes": 15,
+        "publishedAt": "2026-10-02T10:00:14Z",
+        "youtubeId": "qTYwW91FKUw",
+        "title": "【桃園】人氣牛肉麵王者 巨無霸牛骨【食尚玩家】20261001(1/3)"
+      },
+      {
+        "number": 22,
+        "minutes": 15,
+        "publishedAt": "2026-10-02T10:15:07Z",
+        "youtubeId": "qIZJM-MwXro",
+        "title": "【桃園】台菜大爆發！超狂蝦餡老油條【食尚玩家】20261001(2/3)"
+      },
+      {
+        "number": 21,
+        "minutes": 14,
+        "publishedAt": "2026-10-02T10:30:21Z",
+        "youtubeId": "aVMMGELfchw",
+        "title": "【桃園】窯烤界天花板 黃金窯烤雞【食尚玩家】20261001(3/3)"
+      },
+      {
+        "number": 20,
+        "minutes": 20,
+        "publishedAt": "2026-09-30T11:00:06Z",
+        "youtubeId": "kysLIm_i6MM",
+        "title": "來去雲林草嶺吸收芬多精！煙幕瀰漫曾子余開始亂！山嵐中野餐唯美畫面變超崩潰！｜SuperTaste Taiwan｜#食尚玩家#曾子余【網路獨家】20260930"
+      },
+      {
+        "number": 19,
+        "minutes": 48,
+        "publishedAt": "2026-10-01T04:00:10Z",
+        "youtubeId": "PJjxP8LBXLg",
+        "title": "正港蘭陽味大搜查🔍高CP值古早味餐廳、廣興夜市超人氣炒滷味、爆汁雞腿酥、隱藏版創意油飯｜#納豆#曾子余#王敏淳 SuperTasteTaiwan｜#食尚玩家PLAYON 完整版20260930📍宜蘭"
+      },
+      {
+        "number": 18,
+        "minutes": 11,
+        "publishedAt": "2026-10-01T10:00:03Z",
+        "youtubeId": "886LvakKsuc",
+        "title": "【宜蘭】高CP職古早味餐廳【食尚玩家】20260930(1/3)"
+      },
+      {
+        "number": 17,
+        "minutes": 19,
+        "publishedAt": "2026-10-01T10:15:28Z",
+        "youtubeId": "vxwkhi-FEBs",
+        "title": "【宜蘭】巨無霸錢幣雞蛋糕【食尚玩家】20260930(2/3)"
+      },
+      {
+        "number": 16,
+        "minutes": 10,
+        "publishedAt": "2026-10-01T10:30:03Z",
+        "youtubeId": "MRCdA_Ai6z8",
+        "title": "【宜蘭】超彭派手陸海味台菜【食尚玩家】20260930(3/3)"
+      },
+      {
+        "number": 15,
+        "minutes": 48,
+        "publishedAt": "2026-09-30T04:00:11Z",
+        "youtubeId": "QBeDf5GBt2U",
+        "title": "陳隨意來踢館🥊彰化世界級小吃PK⚔️超嫩Q爌肉販、鹿港老字號粉粿冰、蒸餃只要60元？｜#風田#朵拉#阿龐#陳隨意 SuperTasteTaiwan｜#食尚玩家PLAYON 完整版20260929📍彰化"
+      },
+      {
+        "number": 14,
+        "minutes": 15,
+        "publishedAt": "2026-09-30T10:00:11Z",
+        "youtubeId": "bwB1bagmqsQ",
+        "title": "【彰化】超低調 隱身市場嫩Q爌肉飯【食尚玩家】20260929(1/3)"
+      },
+      {
+        "number": 13,
+        "minutes": 12,
+        "publishedAt": "2026-09-30T10:15:07Z",
+        "youtubeId": "EYQjO0qs8vs",
+        "title": "【彰化】通通銅板價 鹿港老字號粉粿冰【食尚玩家】20260929(2/3)"
+      },
+      {
+        "number": 12,
+        "minutes": 16,
+        "publishedAt": "2026-09-30T10:30:07Z",
+        "youtubeId": "jrG9YXWoQxw",
+        "title": "【彰化】隱藏巷仔內 老字號陽春麵【食尚玩家】20260929(3/3)"
+      },
+      {
+        "number": 11,
+        "minutes": 47,
+        "publishedAt": "2026-09-29T04:00:07Z",
+        "youtubeId": "--8vuNMeShM",
+        "title": "一日關島的生活 私藏景點名單報你知！絕對Local！｜#曾子余#六月#林莎#是元介 SuperTasteTaiwan｜#食尚玩家關島特輯 完整版 20260928📍關島"
+      },
+      {
+        "number": 10,
+        "minutes": 62,
+        "publishedAt": "2026-09-27T09:00:26Z",
+        "youtubeId": "OtP-4T4ZOio",
+        "title": "食尚玩家拍過的2026新竹米其林必比登！新上榜老字號小吃「一哥炊粉」、東門市場超人氣美食米粉攤、傳承超過一甲子的ㄤ咕麵｜SuperTaste Taiwan｜#食尚玩家【美食攏底家】20260927"
+      },
+      {
+        "number": 9,
+        "minutes": 54,
+        "publishedAt": "2026-09-26T09:00:26Z",
+        "youtubeId": "wDvxU8IHKkY",
+        "title": "中秋節就是要吃烤肉🥩🔥道地四川豆花烤魚、超人氣燒肉餐酒館、超大份頂級韓式燒烤、日式三輪車串燒｜SuperTaste Taiwan｜#食尚玩家【美食攏底家】20260926"
+      },
+      {
+        "number": 8,
+        "minutes": 48,
+        "publishedAt": "2026-09-25T04:00:10Z",
+        "youtubeId": "HRgFv8PVuJQ",
+        "title": "中壢私藏玩法全公開！紅油香辣超涮嘴米干店上癮的麻辣滷味、古早客家滋味｜#林美秀#張再興#Ozone#林煥鈞 SuperTasteTaiwan｜#食尚玩家我們這一家 完整版20260924📍中壢"
+      },
+      {
+        "number": 7,
+        "minutes": 12,
+        "publishedAt": "2026-09-25T10:00:18Z",
+        "youtubeId": "smlTmMvLXY0",
+        "title": "【中壢】傳承外婆手藝 古早客家滋味【食尚玩家】20260924(1/3)"
+      },
+      {
+        "number": 6,
+        "minutes": 17,
+        "publishedAt": "2026-09-25T10:15:30Z",
+        "youtubeId": "gy5p-aV5EKo",
+        "title": "【中壢】麻辣滷味超上癮【食尚玩家】20260924(2/3)"
+      },
+      {
+        "number": 5,
+        "minutes": 15,
+        "publishedAt": "2026-09-25T10:30:39Z",
+        "youtubeId": "tOHHA_KHztw",
+        "title": "【中壢】傳承外婆手藝 古早客家滋味【食尚玩家】20260924(3/3)"
+      },
+      {
+        "number": 4,
+        "minutes": 48,
+        "publishedAt": "2026-09-24T04:00:09Z",
+        "youtubeId": "UYNob8L26HM",
+        "title": "台南最市場美食爭霸戰！飄香90年國宴米糕、酸菜尬蛋餅、虱目魚腸豬排漢堡、爆餡沙拉三明治｜#納豆#曾子余#王敏淳 SuperTasteTaiwan｜#食尚玩家PLAYON 完整版20260923📍台南"
+      },
+      {
+        "number": 3,
+        "minutes": 9,
+        "publishedAt": "2026-09-24T10:00:25Z",
+        "youtubeId": "oaJM7pYqQBE",
+        "title": "【台南】傳承三代棺材板創始店【食尚玩家】20260923(1/3)"
+      },
+      {
+        "number": 2,
+        "minutes": 12,
+        "publishedAt": "2026-09-24T10:15:38Z",
+        "youtubeId": "2QfLalLgKKs",
+        "title": "【台南】超平價正宗泰式料理【食尚玩家】20260923(2/3)"
+      },
+      {
+        "number": 1,
+        "minutes": 22,
+        "publishedAt": "2026-09-24T10:30:04Z",
+        "youtubeId": "EdTvheQ3kwM",
+        "title": "【台南】超人氣創意雞蛋燒【食尚玩家】20260923(3/3)"
       }
     ]
   }

@@ -6,7 +6,7 @@ import type { ChannelEntry, Generated, Overrides, RawChannel, RawVideo } from ".
 import { QuotaError, YouTube } from "./youtube.ts";
 
 /** How far back a fetch reads when neither --days nor the channel's sinceDays says otherwise. */
-const DEFAULT_DAYS = 7;
+const DEFAULT_DAYS = 30;
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const DATA = join(ROOT, "data");
 const RAW = join(DATA, "raw");
